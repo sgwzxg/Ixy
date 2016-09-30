@@ -1,4 +1,7 @@
-﻿{
+{
+  "title": "Model layer",
+  "copyright": "It depends on no other projects in our solution",
+  "description": "It can also be called Core if you like",
   "version": "1.0.0-*",
 
   "dependencies": {
