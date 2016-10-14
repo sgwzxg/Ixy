@@ -3,18 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Application", "src\Ixy.Application\Ixy.Application.xproj", "{9A355B49-F2F5-4C38-8622-A576D823ECBB}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Presentation", "01.Presentation", "{37C06D1F-C5F2-4A11-A158-621A73FD92D9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Application", "02.Application", "{C519330D-A1C7-4FAD-92E6-13564C60AEDE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Infrastracture", "03.Infrastracture", "{D3768F0A-F47D-4F3C-B034-CCA4CC7E5F5E}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Utility", "src\Ixy.Utility\Ixy.Utility.xproj", "{7CBA3F2C-F28B-4493-B224-4F0902ADB9C0}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.EntityFrameworkCore", "src\Ixy.EntityFrameworkCore\Ixy.EntityFrameworkCore.xproj", "{50DBFA1C-CEE6-4EDC-81C2-BB69241A29C0}"
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Web", "src\Ixy.Web\Ixy.Web.xproj", "{CED1851A-228F-4D02-B98A-C15CB08BC9E0}"
 EndProject
 Global
@@ -23,18 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9A355B49-F2F5-4C38-8622-A576D823ECBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A355B49-F2F5-4C38-8622-A576D823ECBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A355B49-F2F5-4C38-8622-A576D823ECBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A355B49-F2F5-4C38-8622-A576D823ECBB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7CBA3F2C-F28B-4493-B224-4F0902ADB9C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7CBA3F2C-F28B-4493-B224-4F0902ADB9C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7CBA3F2C-F28B-4493-B224-4F0902ADB9C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7CBA3F2C-F28B-4493-B224-4F0902ADB9C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50DBFA1C-CEE6-4EDC-81C2-BB69241A29C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50DBFA1C-CEE6-4EDC-81C2-BB69241A29C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50DBFA1C-CEE6-4EDC-81C2-BB69241A29C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50DBFA1C-CEE6-4EDC-81C2-BB69241A29C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CED1851A-228F-4D02-B98A-C15CB08BC9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CED1851A-228F-4D02-B98A-C15CB08BC9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CED1851A-228F-4D02-B98A-C15CB08BC9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -42,11 +18,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{9A355B49-F2F5-4C38-8622-A576D823ECBB} = {C519330D-A1C7-4FAD-92E6-13564C60AEDE}
-		{7CBA3F2C-F28B-4493-B224-4F0902ADB9C0} = {D3768F0A-F47D-4F3C-B034-CCA4CC7E5F5E}
-		{50DBFA1C-CEE6-4EDC-81C2-BB69241A29C0} = {D3768F0A-F47D-4F3C-B034-CCA4CC7E5F5E}
-		{CED1851A-228F-4D02-B98A-C15CB08BC9E0} = {37C06D1F-C5F2-4A11-A158-621A73FD92D9}
 	EndGlobalSection
 EndGlobal

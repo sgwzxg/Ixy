@@ -45,15 +45,13 @@ namespace Ixy.Web
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddIdentity<IxyUser, IdentityRole>()
-                .AddEntityFrameworkStores<IxyDbContext>()
-                .AddDefaultTokenProviders();
-
-            services.Configure<IdentityOptions>(options =>
+            services.AddIdentity<IxyUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequiredLength = 8;
-            });
+            })
+            .AddEntityFrameworkStores<IxyDbContext>()
+            .AddDefaultTokenProviders();
 
             services.AddMvc();
 
