@@ -1,6 +1,6 @@
 ﻿using Ixy.EntityFrameworkCore.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
-
+using Ixy.Data.Models;
 namespace Ixy.EntityFrameworkCore.Infrastructure
 {
     public class IxyDbContext : DbContext, IDbContext
@@ -11,6 +11,6 @@ namespace Ixy.EntityFrameworkCore.Infrastructure
 
         }
 
-        //public DbSet<User> Users { get; set; }
+        public DbSet<MenuItem> MenuItems { get; set; }
     }
 }
