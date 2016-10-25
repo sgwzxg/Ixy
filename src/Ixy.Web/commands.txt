@@ -1,0 +1,4 @@
+﻿Add-Migration -Name Init-IxyDbContext -OutputDir Migrations\IxyDbContext -Context IxyDbContext
+
+
+Update-Database -Migration Init-IxyDbContext -Context IxyDbContext

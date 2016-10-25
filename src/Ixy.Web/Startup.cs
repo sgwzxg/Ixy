@@ -39,11 +39,10 @@ namespace Ixy.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
+            // Add data context
             services.AddDbContext<IxyDbContext>(options =>
             {
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
-                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddIdentity<IxyUser, IdentityRole>(options =>
@@ -53,12 +52,10 @@ namespace Ixy.Web
             })
             .AddEntityFrameworkStores<IxyDbContext>()
             .AddDefaultTokenProviders();
+            
+            RegisterServices.Run(services);
 
             services.AddMvc();
-
-            // Add application services.
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
