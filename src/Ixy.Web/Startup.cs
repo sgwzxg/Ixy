@@ -52,7 +52,7 @@ namespace Ixy.Web
             })
             .AddEntityFrameworkStores<IxyDbContext>()
             .AddDefaultTokenProviders();
-            
+
             RegisterServices.Run(services);
 
             services.AddMvc();
@@ -86,6 +86,10 @@ namespace Ixy.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                    name: "areaRoute",
+                    template: "{area:exists}/{controller}/{action=Index}/{id?}");
             });
         }
     }
