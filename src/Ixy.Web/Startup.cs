@@ -42,7 +42,8 @@ namespace Ixy.Web
             // Add framework services.
             services.AddDbContext<IxyDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
+                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddIdentity<IxyUser, IdentityRole>(options =>
