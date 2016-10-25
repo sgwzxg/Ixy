@@ -1,4 +1,4 @@
-﻿namespace Ixy.EntityFrameworkCore.Models
+﻿namespace Ixy.Models
 {
     public interface IEntity<TKey>
     {

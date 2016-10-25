@@ -1,4 +1,4 @@
-﻿using Ixy.EntityFrameworkCore.Models;
+﻿using Ixy.Models;
 using System;
 using System.Linq;
 using System.Linq.Expressions;

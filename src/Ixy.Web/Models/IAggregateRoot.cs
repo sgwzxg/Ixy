@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ixy.EntityFrameworkCore.Models
+namespace Ixy.Models
 {
     public interface IAggregateRoot : IEntity<string>
     {

@@ -1,15 +1,16 @@
-﻿using Ixy.EntityFrameworkCore.Models;
+﻿using Ixy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ixy.Web.EntityFrameworkCore.Models
+namespace Ixy.Models
 {
-    public class Tag : IAggregateRoot
+    public class Category : IAggregateRoot
     {
-        public Tag()
+        public Category()
         {
+
             Id = Guid.NewGuid().ToString();
         }
 

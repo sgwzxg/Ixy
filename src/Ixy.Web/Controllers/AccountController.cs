@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Ixy.Application.Services;
 using Ixy.Application.ViewModels.AccountViewModels;
-using Ixy.EntityFrameworkCore.Models.Identity;
+using Ixy.Models.Identity;
 
 namespace Ixy.Web.Controllers
 {

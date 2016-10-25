@@ -1,5 +1,5 @@
 ﻿using Ixy.EntityFrameworkCore.Infrastructure.Interfaces;
-using Ixy.EntityFrameworkCore.Models.Identity;
+using Ixy.Models.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

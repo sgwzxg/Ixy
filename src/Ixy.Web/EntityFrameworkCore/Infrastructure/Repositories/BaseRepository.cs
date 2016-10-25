@@ -1,4 +1,4 @@
-﻿using Ixy.EntityFrameworkCore.Models;
+﻿using Ixy.Models;
 using Ixy.EntityFrameworkCore.Infrastructure.Interfaces;
 using Ixy.EntityFrameworkCore.Infrastructure.Repositories.Interfaces;
 using System;

@@ -1,6 +1,6 @@
 ﻿using Ixy.EntityFrameworkCore.Infrastructure.Interfaces;
 using Ixy.EntityFrameworkCore.Infrastructure.Repositories.Interfaces;
-using Ixy.EntityFrameworkCore.Models.Identity;
+using Ixy.Models.Identity;
 using System.Linq;
 using System.Threading.Tasks;
 //using Ixy.Domain.Entities;

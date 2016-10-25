@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Ixy.Application.Services;
 using Ixy.EntityFrameworkCore.Infrastructure;
-using Ixy.EntityFrameworkCore.Models.Identity;
+using Ixy.Models.Identity;
 
 namespace Ixy.Web
 {

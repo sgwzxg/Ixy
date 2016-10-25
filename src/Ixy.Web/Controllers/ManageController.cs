@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Ixy.Application.Services;
-using Ixy.EntityFrameworkCore.Models.Identity;
+using Ixy.Models.Identity;
 using Ixy.Application.ViewModels.ManageViewModels;
 
 namespace Ixy.Web.Controllers
