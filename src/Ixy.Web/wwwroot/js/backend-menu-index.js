@@ -91,7 +91,7 @@ function checkAll(obj) {
 function add(type) {
     if (type === 1) {
         if (selectedMenuId === "00000000-0000-0000-0000-000000000000") {
-            layer.alert("one menu/button at least.");
+            layer.alert("one menu or button at least.");
             return;
         }
         $("#ParentId").val(selectedMenuId);
@@ -134,7 +134,11 @@ function edit(id) {
 };
 
 function save() {
-    var postData = { "dto": { "Id": $("#Id").val(), "ParentId": $("#ParentId").val(), "Name": $("#Name").val(), "Code": $("#Code").val(), "Type": $("#Type").val(), "Url": $("#Url").val(), "Icon": $("#Icon").val(), "SerialNumber": $("#SerialNumber").val(), "Remarks": $("#Remarks").val() } };
+    var postData = {
+        "dto": {
+            "Id": $("#Id").val(), "ParentId": $("#ParentId").val(), "Name": $("#Name").val(), "Code": $("#Code").val(), "Type": $("#Type").val(), "Url": $("#Url").val(), "Icon": $("#Icon").val(), "SerialNumber": $("#SerialNumber").val(), "Remarks": $("#Remarks").val()
+        }
+    };
     $.ajax({
         type: "Post",
         url: "/Menu/Edit",
