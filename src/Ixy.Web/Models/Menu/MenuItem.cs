@@ -18,4 +18,11 @@ namespace Ixy.Data.Models
         public string Icon { get; set; }
         public string Description { get; set; }
     }
+
+    public class TreeNode
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string ParentId { get; set; }
+    }
 }

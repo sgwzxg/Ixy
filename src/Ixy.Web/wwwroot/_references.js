@@ -1,5 +1,7 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="js/app.js" />
+/// <reference path="js/backend-menu-index.js" />
+/// <reference path="js/bootstrap-paginator.js" />
 /// <reference path="js/site.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
 /// <reference path="lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js" />
