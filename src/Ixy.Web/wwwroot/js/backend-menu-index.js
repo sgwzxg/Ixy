@@ -105,7 +105,7 @@ function add(type) {
     $("#Type").val(0);
     $("#Url").val("");
     $("#Icon").val("");
-    $("#SerialNumber").val(0);
+    $("#Serial").val(0);
     $("#Remarks").val("");
     $("#Title").text("New Root");
     //popup new window
@@ -124,7 +124,7 @@ function edit(id) {
             $("#Type").val(data.type);
             $("#Url").val(data.url);
             $("#Icon").val(data.icon);
-            $("#SerialNumber").val(data.serialNumber);
+            $("#Serial").val(data.serial);
             $("#Remarks").val("");
 
             $("#Title").text("Edit")
