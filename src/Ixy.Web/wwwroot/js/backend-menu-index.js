@@ -53,7 +53,7 @@ function loadTables(startPage, pageSize) {
                 tr += "<td>" + item.name + "</td>";
                 tr += "<td>" + (item.code == null ? "" : item.code) + "</td>";
                 tr += "<td>" + (item.url == null ? "" : item.url) + "</td>";
-                tr += "<td>" + (item.type == 0 ? "功能菜单" : "操作按钮") + "</td>";
+                tr += "<td>" + (item.type == 0 ? "Menu" : "Button") + "</td>";
                 tr += "<td>" + (item.remarks == null ? "" : item.remarks) + "</td>";
                 tr += "<td><button class='btn btn-info btn-xs' href='javascript:;' onclick='edit(\"" + item.id + "\")'><i class='fa fa-edit'></i> 编辑 </button> <button class='btn btn-danger btn-xs' href='javascript:;' onclick='deleteSingle(\"" + item.id + "\")'><i class='fa fa-trash-o'></i> 删除 </button> </td>"
                 tr += "</tr>";
@@ -91,7 +91,7 @@ function checkAll(obj) {
 function add(type) {
     if (type === 1) {
         if (selectedMenuId === "00000000-0000-0000-0000-000000000000") {
-            layer.alert("请选择功能。");
+            layer.alert("one menu/button at least.");
             return;
         }
         $("#ParentId").val(selectedMenuId);
@@ -127,7 +127,7 @@ function edit(id) {
             $("#SerialNumber").val(data.serialNumber);
             $("#Remarks").val("");
 
-            $("#Title").text("编辑功能")
+            $("#Title").text("Edit")
             $("#addRootModal").modal("show");
         }
     })
@@ -160,12 +160,12 @@ function deleteMulti() {
     });
     ids = ids.substring(0, ids.length - 1);
     if (ids.length == 0) {
-        layer.alert("请选择要删除的记录。");
+        layer.alert("please select the records to delete.");
         return;
     };
     //confirm
-    layer.confirm("您确认删除选定的记录吗？", {
-        btn: ["确定", "取消"]
+    layer.confirm("Confirm to delete the selected ones?", {
+        btn: ["Yes", "No"]
     }, function () {
         var sendData = { "ids": ids };
         $.ajax({
@@ -178,7 +178,7 @@ function deleteMulti() {
                     layer.closeAll();
                 }
                 else {
-                    layer.alert("删除失败！");
+                    layer.alert("Delete failed！");
                 }
             }
         });
@@ -186,8 +186,8 @@ function deleteMulti() {
 };
 //delete single line
 function deleteSingle(id) {
-    layer.confirm("您确认删除选定的记录吗？", {
-        btn: ["确定", "取消"]
+    layer.confirm("Confirm to delete the selected one?", {
+        btn: ["Yes", "No"]
     }, function () {
         $.ajax({
             type: "POST",
@@ -199,7 +199,7 @@ function deleteSingle(id) {
                     layer.closeAll();
                 }
                 else {
-                    layer.alert("删除失败！");
+                    layer.alert("Delete failed！");
                 }
             }
         })
