@@ -1,14 +1,10 @@
-﻿using Ixy.Application.Services;
-using Ixy.Applications.Services;
-using Ixy.EntityFrameworkCore.Infrastructure;
-using Ixy.EntityFrameworkCore.Infrastructure.Interfaces;
-using Ixy.EntityFrameworkCore.Infrastructure.Repositories;
-using Ixy.Models.IRepositories;
+﻿using Ixy.Application.Interfaces;
+using Ixy.Application.Services;
+using Ixy.Core.Interfaces;
+using Ixy.Infrastructure;
+using Ixy.Infrastructure.Interfaces;
+using Ixy.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Ixy.Web
 {

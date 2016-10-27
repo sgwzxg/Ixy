@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Ixy.Application.Interfaces;
+using Ixy.Application.ViewModels.ManageViewModels;
+using Ixy.Core.Models.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Ixy.Application.Services;
-using Ixy.Models.Identity;
-using Ixy.Application.ViewModels.ManageViewModels;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Ixy.Web.Controllers
 {

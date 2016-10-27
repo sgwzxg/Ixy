@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Ixy.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
-using Ixy.EntityFrameworkCore.Infrastructure;
+using System;
 
 namespace Ixy.Web.Migrations
 {
