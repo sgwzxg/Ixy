@@ -42,5 +42,11 @@ namespace Ixy.Applications.Services
             return await _unitOfWork.CommitAsync();
 
         }
+
+        public async Task<bool> EditAsync(MenuItem entity)
+        {
+            _unitOfWork.RegisterDirty(entity);
+            return await _unitOfWork.CommitAsync();
+        }
     }
 }

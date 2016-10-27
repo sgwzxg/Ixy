@@ -16,20 +16,20 @@ function initTree() {
     $.jstree.destroy();
     $.ajax({
         type: "Get",
-        url: "Backend/Menu/GetMenuTreeData",    //获取数据的ajax请求地址
+        url: "Backend/Menu/GetMenuTreeData",
         success: function (data) {
-            $('#treeDiv').jstree({       //创建JsTtree
+            $('#treeDiv').jstree({
                 'core': {
-                    'data': data,        //绑定JsTree数据
-                    "multiple": false    //是否多选
+                    'data': data,
+                    "multiple": false
                 },
-                "plugins": ["state", "types", "wholerow"]  //配置信息
+                "plugins": ["state", "types", "wholerow"]
             })
-            $("#treeDiv").on("ready.jstree", function (e, data) {   //树创建完成事件
-                data.instance.open_all();    //展开所有节点
+            $("#treeDiv").on("ready.jstree", function (e, data) {
+                data.instance.open_all();
             });
-            $("#treeDiv").on('changed.jstree', function (e, data) {   //选中节点改变事件
-                var node = data.instance.get_node(data.selected[0]);  //获取选中的节点
+            $("#treeDiv").on('changed.jstree', function (e, data) {
+                var node = data.instance.get_node(data.selected[0]);
                 if (node) {
                     selectedMenuId = node.id;
                     loadTables(1, 10);
@@ -55,22 +55,22 @@ function loadTables(startPage, pageSize) {
                 tr += "<td>" + (item.url == null ? "" : item.url) + "</td>";
                 tr += "<td>" + (item.type == 0 ? "Menu" : "Button") + "</td>";
                 tr += "<td>" + (item.remarks == null ? "" : item.remarks) + "</td>";
-                tr += "<td><button class='btn btn-info btn-xs' href='javascript:;' onclick='edit(\"" + item.id + "\")'><i class='fa fa-edit'></i> 编辑 </button> <button class='btn btn-danger btn-xs' href='javascript:;' onclick='deleteSingle(\"" + item.id + "\")'><i class='fa fa-trash-o'></i> 删除 </button> </td>"
+                tr += "<td><button class='btn btn-info btn-xs' href='javascript:;' onclick='edit(\"" + item.id + "\")'><i class='fa fa-edit'></i> Edit </button> <button class='btn btn-danger btn-xs' href='javascript:;' onclick='deleteSingle(\"" + item.id + "\")'><i class='fa fa-trash-o'></i> Delete </button> </td>"
                 tr += "</tr>";
                 $("#tableBody").append(tr);
             })
-            var elment = $("#grid_paging_part"); //分页插件的容器id
+            var elment = $("#grid_paging_part");
             if (data.rowCount > 0) {
-                var options = { //分页插件配置项
+                var options = { 
                     bootstrapMajorVersion: 3,
-                    currentPage: startPage, //当前页
-                    numberOfPages: data.rowsCount, //总数
-                    totalPages: data.pageCount, //总页数
-                    onPageChanged: function (event, oldPage, newPage) { //页面切换事件
+                    currentPage: startPage,
+                    numberOfPages: data.rowsCount,
+                    totalPages: data.pageCount,
+                    onPageChanged: function (event, oldPage, newPage) {
                         loadTables(newPage, pageSize);
                     }
                 }
-                elment.bootstrapPaginator(options); //分页插件初始化
+                elment.bootstrapPaginator(options);
             }
         }
     })
@@ -125,7 +125,7 @@ function edit(id) {
             $("#Url").val(data.url);
             $("#Icon").val(data.icon);
             $("#Serial").val(data.serial);
-            $("#Remarks").val("");
+            $("#Description").val("");
 
             $("#Title").text("Edit")
             $("#addRootModal").modal("show");
@@ -134,14 +134,24 @@ function edit(id) {
 };
 
 function save() {
+    console.log("save");
     var postData = {
-        "dto": {
-            "Id": $("#Id").val(), "ParentId": $("#ParentId").val(), "Name": $("#Name").val(), "Code": $("#Code").val(), "Type": $("#Type").val(), "Url": $("#Url").val(), "Icon": $("#Icon").val(), "SerialNumber": $("#SerialNumber").val(), "Remarks": $("#Remarks").val()
+        "menuItem": {
+            "Id": $("#Id").val(),
+            "ParentId": $("#ParentId").val(),
+            "Name": $("#Name").val(),
+            "Code": $("#Code").val(),
+            "Type": $("#Type").val(),
+            "Url": $("#Url").val(),
+            "Icon": $("#Icon").val(),
+            "Serial": $("#Serial").val(),
+            "Description": $("#Description").val()
         }
     };
+    
     $.ajax({
         type: "Post",
-        url: "/Menu/Edit",
+        url: "/Backend/Menu/Edit",
         data: postData,
         success: function (data) {
             debugger
@@ -151,6 +161,37 @@ function save() {
             } else {
                 layer.tips(data.message, "#btnSave");
             };
+        },
+        error: function (e, x, status, error) {
+            debugger
+            var message;
+            var statusErrorMap = {
+                '400': "Server understood the request, but request content was invalid.",
+                '401': "Unauthorized access.",
+                '403': "Forbidden resource can't be accessed.",
+                '404': "Not found.",
+                '500': "Internal server error.",
+                '503': "Service unavailable."
+            };
+
+            console.log(x.status);
+            console.log(error);
+            if (x.status) {
+                message = statusErrorMap[x.status];
+                if (!message) {
+                    message = "Unknown Error \n.";
+                }
+            } else if (error == 'parsererror') {
+                message = "Error.\nParsing JSON Request failed.";
+            } else if (error == 'timeout') {
+                message = "Request Time out.";
+            } else if (error == 'abort') {
+                message = "Request was aborted by the server";
+            } else {
+                message = "Unknown Error \n.";
+            }
+
+            layer.tips(message,"");
         }
     });
 };

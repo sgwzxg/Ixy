@@ -10,6 +10,7 @@ using Ixy.Data.Models;
 namespace Ixy.Web.Areas.Backend.Controllers
 {
     [Area("Backend")]
+    //[Route("Backend/[controller]")]
     [Authorize]
     public class MenuController : Controller
     {
@@ -25,6 +26,28 @@ namespace Ixy.Web.Areas.Backend.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Edit(MenuItem menuItem)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(new
+                {
+                    Result = "Failed",
+                    Message = GetModelStateError()
+                });
+            }
+
+            var result = await _service.EditAsync(menuItem);
+
+            if (!result)
+            {
+                return Json(new { Result = "Success" });
+            }
+
+            return Json(new { Result = "Failed" });
+
+        }
+        
         [HttpGet]
         public async Task<IActionResult> GetMenuTreeData()
         {
@@ -54,8 +77,20 @@ namespace Ixy.Web.Areas.Backend.Controllers
 
         public async Task<IActionResult> Get(string id)
         {
-            var menu =await _service.GetAsync(id);
+            var menu = await _service.GetAsync(id);
             return Json(menu);
+        }
+
+        public string GetModelStateError()
+        {
+            foreach (var item in ModelState.Values)
+            {
+                if (item.Errors.Count > 0)
+                {
+                    return item.Errors[0].ErrorMessage;
+                }
+            }
+            return "";
         }
     }
 }
