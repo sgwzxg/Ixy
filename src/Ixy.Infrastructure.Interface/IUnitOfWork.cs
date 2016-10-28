@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Ixy.Infrastructure.Interfaces
+namespace Ixy.Infrastructure.Interface
 {
     /// <summary>
     /// http://martinfowler.com/eaaCatalog/unitOfWork.html

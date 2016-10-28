@@ -1,8 +1,8 @@
-﻿using Ixy.Core.Interfaces;
-using Ixy.Core.Models;
-using Ixy.Infrastructure.Interfaces;
+﻿using Ixy.Core.Interface;
+using Ixy.Core.Model;
+using Ixy.Infrastructure.Interface;
 
-namespace Ixy.Infrastructure.Repositories
+namespace Ixy.Infrastructure.Repository
 {
     public class MenuRepository : BaseRepository<MenuItem>, IMenuRepository
     {

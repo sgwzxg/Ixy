@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Ixy.Core.Models;
-namespace Ixy.Application.Interfaces
+using Ixy.Core.Model;
+
+namespace Ixy.Application.Service.Interface
 {
     public interface IMenuService
     {

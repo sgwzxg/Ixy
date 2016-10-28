@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Ixy.Application.Interfaces
+namespace Ixy.Application.Service.Interface
 {
     public interface ISmsSender
     {

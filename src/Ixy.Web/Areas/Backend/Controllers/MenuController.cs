@@ -1,5 +1,5 @@
-using Ixy.Application.Interfaces;
-using Ixy.Core.Models;
+using Ixy.Application.Service.Interface;
+using Ixy.Core.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;

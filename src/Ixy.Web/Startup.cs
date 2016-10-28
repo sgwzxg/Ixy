@@ -1,4 +1,4 @@
-﻿using Ixy.Core.Models.Identity;
+﻿using Ixy.Core.Model.Identity;
 using Ixy.Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

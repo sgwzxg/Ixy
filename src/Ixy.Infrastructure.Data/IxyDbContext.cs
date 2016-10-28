@@ -1,6 +1,6 @@
-﻿using Ixy.Core.Models;
-using Ixy.Core.Models.Identity;
-using Ixy.Infrastructure.Interfaces;
+﻿using Ixy.Core.Model;
+using Ixy.Core.Model.Identity;
+using Ixy.Infrastructure.Interface;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +25,8 @@ namespace Ixy.Infrastructure.Data
             //builder.Entity<IdentityUserRole<string>>().ToTable("IxyUserRole");
             //builder.Entity<IdentityUserClaim<string>>().ToTable("IxyRole");
             //builder.Entity<IdentityUserLogin<string>>().ToTable("IxyUserLogin");
+
+            
         }
 
         public DbSet<MenuItem> MenuItems { get; set; }

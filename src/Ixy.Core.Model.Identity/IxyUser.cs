@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Ixy.Core.Model.Interface;
 
-namespace Ixy.Identity.Core.Model
+namespace Ixy.Core.Model.Identity
 {
     public class IxyUser : IdentityUser, IAggregateRoot
     {

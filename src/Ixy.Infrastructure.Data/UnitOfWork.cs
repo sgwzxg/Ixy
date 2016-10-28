@@ -1,4 +1,4 @@
-﻿using Ixy.Infrastructure.Interfaces;
+﻿using Ixy.Infrastructure.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;

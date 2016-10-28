@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Ixy.Infrastructure.Interfaces
+namespace Ixy.Infrastructure.Interface
 {
     public interface IDbContext
     {

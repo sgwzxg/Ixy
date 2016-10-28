@@ -1,6 +1,4 @@
-﻿//using Ixy.Domain.Entities;
-
-namespace Ixy.Application.Services
+﻿namespace Ixy.Application.Service
 {
     public class UserService //: IUserService
     {

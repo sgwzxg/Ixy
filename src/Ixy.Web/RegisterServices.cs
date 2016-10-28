@@ -1,9 +1,9 @@
-﻿using Ixy.Application.Interfaces;
-using Ixy.Application.Services;
-using Ixy.Core.Interfaces;
+﻿using Ixy.Application.Service;
+using Ixy.Application.Service.Interface;
+using Ixy.Core.Interface;
 using Ixy.Infrastructure;
-using Ixy.Infrastructure.Interfaces;
-using Ixy.Infrastructure.Repositories;
+using Ixy.Infrastructure.Interface;
+using Ixy.Infrastructure.Repository;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Ixy.Web

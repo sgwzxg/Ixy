@@ -1,6 +1,6 @@
-﻿using Ixy.Core.Interfaces;
-using Ixy.Core.Models;
-using Ixy.Infrastructure.Interfaces;
+﻿using Ixy.Core.Interface;
+using Ixy.Core.Model.Interface;
+using Ixy.Infrastructure.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Ixy.Infrastructure.Repositories
+namespace Ixy.Infrastructure.Repository
 {
     public abstract class BaseRepository<TAggregateRoot> :
         IRepository<TAggregateRoot> where TAggregateRoot : class, IAggregateRoot

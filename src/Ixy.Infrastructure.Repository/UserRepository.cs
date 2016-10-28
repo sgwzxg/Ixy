@@ -1,4 +1,4 @@
-﻿namespace Ixy.EntityFrameworkCore.Infrastructure.Repositories
+﻿namespace Ixy.Infrastructure.Repository
 {
     //    public class UserRepository :BaseRepository<User>, IUserRepository
     //    {

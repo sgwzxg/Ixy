@@ -1,7 +1,0 @@
-﻿dotnet ef migrations add {MigrationName}
-dotnet ef database update 
-
-Add-Migration -Name Init-IxyDbContext -OutputDir Migrations\IxyDbContextMigrations -Context IxyDbContext
-dotnet ef migrations add Init-IxyDbContext
-
-Update-Database -Migration Init-IxyDbContext -Context IxyDbContext

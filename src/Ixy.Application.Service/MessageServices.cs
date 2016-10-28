@@ -1,7 +1,7 @@
-﻿using Ixy.Application.Interfaces;
+﻿using Ixy.Application.Service.Interface;
 using System.Threading.Tasks;
 
-namespace Ixy.Application.Services
+namespace Ixy.Application.Service
 {
     // This class is used by the application to send Email and SMS
     // when you turn on two-factor authentication in ASP.NET Identity.

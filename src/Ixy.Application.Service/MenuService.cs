@@ -1,13 +1,13 @@
-﻿using Ixy.Application.Interfaces;
-using Ixy.Core.Interfaces;
-using Ixy.Core.Models;
-using Ixy.Infrastructure.Interfaces;
+﻿using Ixy.Application.Service.Interface;
+using Ixy.Core.Interface;
+using Ixy.Core.Model;
+using Ixy.Infrastructure.Interface;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ixy.Application.Services
+namespace Ixy.Application.Service
 {
     public class MenuService : IMenuService
     {
