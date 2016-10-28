@@ -5,6 +5,30 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Web", "src\Ixy.Web\Ixy.Web.xproj", "{CED1851A-228F-4D02-B98A-C15CB08BC9E0}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Core.Interface", "src\Ixy.Core.Interface\Ixy.Core.Interface.xproj", "{B9CE8129-8730-450A-B379-DD7DBBBDB7C4}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Core.Model", "src\Ixy.Core.Model\Ixy.Core.Model.xproj", "{91AD4B45-C5FE-4EF3-86F5-0835F01ABC8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Core", "02.Core", "{3956BD5E-6AA5-48C5-B09D-3E79E25F6AAB}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Infrastructure.Interface", "src\Ixy.Infrastructure.Interface\Ixy.Infrastructure.Interface.xproj", "{3E154303-393D-44F1-B780-A4B5986AC330}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Infrastructure", "01.Infrastructure", "{6DC0B1D6-A095-41A9-815E-01246F35F806}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Infrastructure.Repository", "src\Ixy.Infrastructure.Repository\Ixy.Infrastructure.Repository.xproj", "{ED271877-AB8C-46D3-88FF-B39FB5ADFFE9}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Infrastructure.Repository.Interface", "src\Ixy.Infrastructure.Repository.Interface\Ixy.Infrastructure.Repository.Interface.xproj", "{9516012A-7D53-42B2-82E3-00A4488D3C1B}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Infrastructure.Data", "src\Ixy.Infrastructure.Data\Ixy.Infrastructure.Data.xproj", "{31DE55A7-4B06-42B0-B6B2-04DD5E1A9A07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Presentation", "04.Presentation", "{0EA77922-19BE-444B-9236-128E177AD503}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Applidation", "03.Applidation", "{248E65EE-0478-4E2F-B5E3-80DF1E0B707F}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Application.Service.Interface", "src\Ixy.Application.Service.Interface\Ixy.Application.Service.Interface.xproj", "{3ECA788D-568D-4217-9F53-99D60849C830}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Application.Service", "src\Ixy.Application.Service\Ixy.Application.Service.xproj", "{54925D74-C302-4328-B279-A75276F08768}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +39,51 @@ Global
 		{CED1851A-228F-4D02-B98A-C15CB08BC9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CED1851A-228F-4D02-B98A-C15CB08BC9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CED1851A-228F-4D02-B98A-C15CB08BC9E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9CE8129-8730-450A-B379-DD7DBBBDB7C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9CE8129-8730-450A-B379-DD7DBBBDB7C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9CE8129-8730-450A-B379-DD7DBBBDB7C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9CE8129-8730-450A-B379-DD7DBBBDB7C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91AD4B45-C5FE-4EF3-86F5-0835F01ABC8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91AD4B45-C5FE-4EF3-86F5-0835F01ABC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91AD4B45-C5FE-4EF3-86F5-0835F01ABC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91AD4B45-C5FE-4EF3-86F5-0835F01ABC8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E154303-393D-44F1-B780-A4B5986AC330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E154303-393D-44F1-B780-A4B5986AC330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E154303-393D-44F1-B780-A4B5986AC330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E154303-393D-44F1-B780-A4B5986AC330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED271877-AB8C-46D3-88FF-B39FB5ADFFE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED271877-AB8C-46D3-88FF-B39FB5ADFFE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED271877-AB8C-46D3-88FF-B39FB5ADFFE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED271877-AB8C-46D3-88FF-B39FB5ADFFE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9516012A-7D53-42B2-82E3-00A4488D3C1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9516012A-7D53-42B2-82E3-00A4488D3C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9516012A-7D53-42B2-82E3-00A4488D3C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9516012A-7D53-42B2-82E3-00A4488D3C1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31DE55A7-4B06-42B0-B6B2-04DD5E1A9A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31DE55A7-4B06-42B0-B6B2-04DD5E1A9A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31DE55A7-4B06-42B0-B6B2-04DD5E1A9A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31DE55A7-4B06-42B0-B6B2-04DD5E1A9A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ECA788D-568D-4217-9F53-99D60849C830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ECA788D-568D-4217-9F53-99D60849C830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ECA788D-568D-4217-9F53-99D60849C830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ECA788D-568D-4217-9F53-99D60849C830}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54925D74-C302-4328-B279-A75276F08768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54925D74-C302-4328-B279-A75276F08768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54925D74-C302-4328-B279-A75276F08768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54925D74-C302-4328-B279-A75276F08768}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CED1851A-228F-4D02-B98A-C15CB08BC9E0} = {0EA77922-19BE-444B-9236-128E177AD503}
+		{B9CE8129-8730-450A-B379-DD7DBBBDB7C4} = {3956BD5E-6AA5-48C5-B09D-3E79E25F6AAB}
+		{91AD4B45-C5FE-4EF3-86F5-0835F01ABC8F} = {3956BD5E-6AA5-48C5-B09D-3E79E25F6AAB}
+		{3E154303-393D-44F1-B780-A4B5986AC330} = {6DC0B1D6-A095-41A9-815E-01246F35F806}
+		{ED271877-AB8C-46D3-88FF-B39FB5ADFFE9} = {6DC0B1D6-A095-41A9-815E-01246F35F806}
+		{9516012A-7D53-42B2-82E3-00A4488D3C1B} = {6DC0B1D6-A095-41A9-815E-01246F35F806}
+		{31DE55A7-4B06-42B0-B6B2-04DD5E1A9A07} = {6DC0B1D6-A095-41A9-815E-01246F35F806}
+		{3ECA788D-568D-4217-9F53-99D60849C830} = {248E65EE-0478-4E2F-B5E3-80DF1E0B707F}
+		{54925D74-C302-4328-B279-A75276F08768} = {248E65EE-0478-4E2F-B5E3-80DF1E0B707F}
 	EndGlobalSection
 EndGlobal
