@@ -1,8 +1,7 @@
-{
+﻿{
   "version": "1.0.0-*",
 
   "dependencies": {
-    "Ixy.Core.Model.Interface": "1.0.0-*",
     "NETStandard.Library": "1.6.0"
   },
 
