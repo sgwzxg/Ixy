@@ -1,4 +1,6 @@
 {
+  "title": "Ixy",
+  "description": "Ixy",
   "userSecretsId": "aspnet-Ixy.Web-bf1ee6bb-f1ae-482d-8822-97172af46e9c",
 
   "dependencies": {
@@ -48,7 +50,9 @@
     "Ixy.Infrastructure.Data": "1.0.0-*",
     "Ixy.Core.Interface": "1.0.0-*",
     "Ixy.Application.Service": "1.0.0-*",
-    "Ixy.Infrastructure.Repository": "1.0.0-*"
+    "Ixy.Infrastructure.Repository": "1.0.0-*",
+    "Microsoft.AspNetCore.Authentication.MicrosoftAccount": "1.0.0",
+    "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
   },
 
   "tools": {
