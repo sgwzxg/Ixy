@@ -15,13 +15,24 @@
   "tools": {
     "Microsoft.EntityFrameworkCore.Tools": {
       "version": "1.0.0-preview3-final",
-      "type": "build"
+      "type": "build",
+      "imports": [
+        "portable-net45+win8+dnxcore50",
+        "portable-net45+win8"
+      ]
     }
   },
 
   "frameworks": {
-    "netstandard1.6": {
-      "imports": "dnxcore50"
+    //"netstandard1.6": {
+    //  "imports": "dnxcore50"
+    //}
+    "netcoreapp1.0": {
+      "imports": [
+        "dotnet5.6",
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
     }
   }
 }
