@@ -19,15 +19,13 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Infrastructure.Reposito
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Infrastructure.Data", "src\Ixy.Infrastructure.Data\Ixy.Infrastructure.Data.xproj", "{31DE55A7-4B06-42B0-B6B2-04DD5E1A9A07}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05.Presentation", "05.Presentation", "{0EA77922-19BE-444B-9236-128E177AD503}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Presentation", "04.Presentation", "{0EA77922-19BE-444B-9236-128E177AD503}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Applidation", "03.Applidation", "{248E65EE-0478-4E2F-B5E3-80DF1E0B707F}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Application.Service.Interface", "src\Ixy.Application.Service.Interface\Ixy.Application.Service.Interface.xproj", "{3ECA788D-568D-4217-9F53-99D60849C830}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Application.Service", "src\Ixy.Application.Service\Ixy.Application.Service.xproj", "{54925D74-C302-4328-B279-A75276F08768}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Identity", "04.Identity", "{1B02AFCE-E062-44D2-95C7-AAD23032FAF6}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Core.Model.Interface", "src\Ixy.Core.Model.Interface\Ixy.Core.Model.Interface.xproj", "{1E9FE709-6BFA-4E31-906C-B2CB77DC1B9B}"
 EndProject
