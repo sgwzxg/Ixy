@@ -36,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Comments.txt = Comments.txt
 	EndProjectSection
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ixy.Application.Authentication", "src\Ixy.Application.Authentication\Ixy.Application.Authentication.xproj", "{0474281B-2EAD-4775-BF0A-27FEBD09255E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,10 @@ Global
 		{ECAC0398-1A9F-4E51-BDED-A5D67D1D5F7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECAC0398-1A9F-4E51-BDED-A5D67D1D5F7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECAC0398-1A9F-4E51-BDED-A5D67D1D5F7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0474281B-2EAD-4775-BF0A-27FEBD09255E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0474281B-2EAD-4775-BF0A-27FEBD09255E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0474281B-2EAD-4775-BF0A-27FEBD09255E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0474281B-2EAD-4775-BF0A-27FEBD09255E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,5 +103,6 @@ Global
 		{54925D74-C302-4328-B279-A75276F08768} = {248E65EE-0478-4E2F-B5E3-80DF1E0B707F}
 		{1E9FE709-6BFA-4E31-906C-B2CB77DC1B9B} = {3956BD5E-6AA5-48C5-B09D-3E79E25F6AAB}
 		{ECAC0398-1A9F-4E51-BDED-A5D67D1D5F7B} = {3956BD5E-6AA5-48C5-B09D-3E79E25F6AAB}
+		{0474281B-2EAD-4775-BF0A-27FEBD09255E} = {248E65EE-0478-4E2F-B5E3-80DF1E0B707F}
 	EndGlobalSection
 EndGlobal

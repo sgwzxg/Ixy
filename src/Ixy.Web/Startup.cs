@@ -1,5 +1,6 @@
 ﻿using Ixy.Core.Model.Identity;
 using Ixy.Infrastructure.Data;
+using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -59,10 +60,9 @@ namespace Ixy.Web
 
             services.AddMvc();
         }
-
+         
         private OAuthOptions GithubOptions => new OAuthOptions
         {
-
             AuthenticationScheme = "Github",
             DisplayName = "Github",
             ClientId = Configuration["Github:ClientId"],
@@ -94,11 +94,11 @@ namespace Ixy.Web
 
         private static void AddClaim(OAuthCreatingTicketContext context, JObject user)
         {
-            var identifier = user.Value<string>("id");
-            if (!string.IsNullOrEmpty(identifier))
+            var id = user.Value<string>("id");
+            if (!string.IsNullOrEmpty(id))
             {
                 context.Identity.AddClaim(new System.Security.Claims.Claim(
-                    ClaimTypes.NameIdentifier, identifier,
+                    ClaimTypes.NameIdentifier, id,
                     ClaimValueTypes.String, context.Options.ClaimsIssuer
                     ));
             }
@@ -124,10 +124,10 @@ namespace Ixy.Web
             var link = user.Value<string>("url");
             if (!string.IsNullOrEmpty(link))
             {
-                context.Identity.AddClaim(new Claim(
-                    "urn:github:url", link,
-                    ClaimValueTypes.String, context.Options.ClaimsIssuer
-                    ));
+            context.Identity.AddClaim(new Claim(
+                "urn:github:url", link,
+                ClaimValueTypes.String, context.Options.ClaimsIssuer
+                ));
             }
         }
 
@@ -153,7 +153,7 @@ namespace Ixy.Web
             app.UseIdentity();
 
             app.UseOAuthAuthentication(GithubOptions);
-
+            app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions());
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
             app.UseMvc(routes =>
