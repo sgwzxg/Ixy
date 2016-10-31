@@ -1,6 +1,6 @@
-﻿using Ixy.Core.Model.Identity;
+﻿using Ixy.Application.Authentication.Github.Builder;
+using Ixy.Core.Model.Identity;
 using Ixy.Infrastructure.Data;
-using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -152,8 +152,15 @@ namespace Ixy.Web
 
             app.UseIdentity();
 
-            app.UseOAuthAuthentication(GithubOptions);
-            app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions());
+            //app.UseOAuthAuthentication(GithubOptions);
+            app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions() {
+                ClientId = Configuration["Microsoft:ClientId"],
+                ClientSecret = Configuration["Microsoft:ClientSecret"]
+            });
+            app.UseGithubAuthentication(new GithubOptions() {
+                ClientId = Configuration["Github:ClientId"],
+                ClientSecret = Configuration["Github:ClientSecret"]
+            });
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
             app.UseMvc(routes =>

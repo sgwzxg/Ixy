@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Ixy.Application.Authentication.Github
+﻿namespace Ixy.Application.Authentication.Github
 {
-    public static class GithubAccountDefaults
+    public static class GithubDefaults
     {
         public const string AuthenticationScheme = "Github";
 

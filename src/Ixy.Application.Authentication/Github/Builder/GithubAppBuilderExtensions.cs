@@ -1,29 +1,23 @@
-﻿using Ixy.Application.Authentication.Github;
-using Ixy.Application.Authentication.GithubAccount;
-using Ixy.Application.Authentication.GithubAccount.Builder;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Ixy.Application.Authentication.Builder
+namespace Ixy.Application.Authentication.Github.Builder
 {
-    public static class GithubAccountAppBuilderExtensions
+    public static class GithubAppBuilderExtensions
     {
         /// <summary>
 		/// Adds the <see cref="T:Microsoft.AspNetCore.Authentication.MicrosoftAccount.MicrosoftAccountMiddleware" /> middleware to the specified <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder" />, which enables Microsoft Account authentication capabilities.
 		/// </summary>
 		/// <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder" /> to add the middleware to.</param>
 		/// <returns>A reference to this instance after the operation has completed.</returns>
-		public static IApplicationBuilder UseGithubAccountAuthentication(this IApplicationBuilder app)
+		public static IApplicationBuilder UseGithubAuthentication(this IApplicationBuilder app)
         {
             if (app == null)
             {
                 throw new ArgumentNullException("app");
             }
-            return UseMiddlewareExtensions.UseMiddleware<GithubAccountMiddleware>(app, Array.Empty<object>());
+            return UseMiddlewareExtensions.UseMiddleware<GithubMiddleware>(app, Array.Empty<object>());
         }
 
         /// <summary>
@@ -32,7 +26,8 @@ namespace Ixy.Application.Authentication.Builder
         /// <param name="app">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder" /> to add the middleware to.</param>
         /// <param name="options">A <see cref="T:Microsoft.AspNetCore.Builder.MicrosoftAccountOptions" /> that specifies options for the middleware.</param>
         /// <returns>A reference to this instance after the operation has completed.</returns>
-        public static IApplicationBuilder UseMicrosoftAccountAuthentication(this IApplicationBuilder app,GithubAccountOptions options)
+        public static IApplicationBuilder UseGithubAuthentication(this IApplicationBuilder app,
+            GithubOptions options)
         {
             if (app == null)
             {
@@ -42,9 +37,9 @@ namespace Ixy.Application.Authentication.Builder
             {
                 throw new ArgumentNullException("options");
             }
-            return UseMiddlewareExtensions.UseMiddleware<GithubAccountMiddleware>(app, new object[]
+            return UseMiddlewareExtensions.UseMiddleware<GithubMiddleware>(app, new object[]
             {
-                Options.Create<GithubAccountOptions>(options)
+                Options.Create<GithubOptions>(options)
             });
         }
     }

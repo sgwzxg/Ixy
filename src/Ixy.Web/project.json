@@ -52,7 +52,8 @@
     "Ixy.Application.Service": "1.0.0-*",
     "Ixy.Infrastructure.Repository": "1.0.0-*",
     "Microsoft.AspNetCore.Authentication.MicrosoftAccount": "1.0.0",
-    "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0"
+    "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0",
+    "Ixy.Application.Authentication": "1.0.0-*"
   },
 
   "tools": {
