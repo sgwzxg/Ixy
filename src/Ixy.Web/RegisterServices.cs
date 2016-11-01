@@ -5,13 +5,14 @@ using Ixy.Infrastructure;
 using Ixy.Infrastructure.Data;
 using Ixy.Infrastructure.Interface;
 using Ixy.Infrastructure.Repository;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Ixy.Web
 {
     public class RegisterServices
     {
-        public static void Run(IServiceCollection services)
+        public static void Run(IServiceCollection services, IConfigurationRoot configuration)
         {
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -20,6 +21,8 @@ namespace Ixy.Web
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IMenuService, MenuService>();
             services.AddScoped<IMenuRepository, MenuRepository>();
+
+            services.Configure<AuthMessageSenderOptions>(configuration);
         }
     }
 }

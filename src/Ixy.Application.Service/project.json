@@ -6,6 +6,7 @@
     "Ixy.Core.Interface": "1.0.0-*",
     "Ixy.Core.Model": "1.0.0-*",
     "Ixy.Infrastructure.Interface": "1.0.0-*",
+    "MailKit": "1.10.0",
     "NETStandard.Library": "1.6.0"
   },
 

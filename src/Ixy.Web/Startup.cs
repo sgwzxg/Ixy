@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -56,7 +57,12 @@ namespace Ixy.Web
             .AddEntityFrameworkStores<IxyDbContext>()
             .AddDefaultTokenProviders();
 
-            RegisterServices.Run(services);
+            RegisterServices.Run(services,Configuration);
+
+            services.Configure<MvcOptions>(options =>
+            {
+                options.Filters.Add(new RequireHttpsAttribute());
+            });
 
             services.AddMvc();
         }
@@ -82,15 +88,8 @@ namespace Ixy.Web
 
             app.UseIdentity();
 
-            //app.UseOAuthAuthentication(GithubOptions);
-            app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions() {
-                ClientId = Configuration["Microsoft:ClientId"],
-                ClientSecret = Configuration["Microsoft:ClientSecret"]
-            });
-            app.UseGithubAuthentication(new GithubOptions() {
-                ClientId = Configuration["Github:ClientId"],
-                ClientSecret = Configuration["Github:ClientSecret"]
-            });
+            RegisterExternalAuthentication.Run(app,Configuration);
+
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
             app.UseMvc(routes =>

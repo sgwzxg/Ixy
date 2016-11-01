@@ -73,13 +73,17 @@
                 else
                 {
                     <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in loginProviders)
-                                {
-                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>
-                                }
-                            </p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4 social-buttons">
+                                    <p>
+                                        @foreach (var provider in loginProviders)
+                                        {
+                                            <button type="submit" class="btn btn-block @provider.Items["LoginCss"]" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.DisplayName account"><span class="@provider.Items["IconCss"]"></span>@provider.AuthenticationScheme</button>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 }
