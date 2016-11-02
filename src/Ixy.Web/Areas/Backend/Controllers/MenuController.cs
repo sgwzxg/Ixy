@@ -1,5 +1,6 @@
 using Ixy.Application.Service.Interface;
 using Ixy.Core.Model;
+using Ixy.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,7 +12,7 @@ namespace Ixy.Web.Areas.Backend.Controllers
 {
     [Area("Backend")]
     [Authorize]
-    public class MenuController : Controller
+    public class MenuController : IxyController
     {
         private readonly IMenuService _service;
 
@@ -78,18 +79,6 @@ namespace Ixy.Web.Areas.Backend.Controllers
         {
             var menu = await _service.GetAsync(id);
             return Json(menu);
-        }
-
-        public string GetModelStateError()
-        {
-            foreach (var item in ModelState.Values)
-            {
-                if (item.Errors.Count > 0)
-                {
-                    return item.Errors[0].ErrorMessage;
-                }
-            }
-            return "";
         }
     }
 }

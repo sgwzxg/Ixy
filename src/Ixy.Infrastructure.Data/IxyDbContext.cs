@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ixy.Infrastructure.Data
 {
-    public class IxyDbContext : IdentityDbContext<IxyUser>, IDbContext
+    public class IxyDbContext : IdentityDbContext<IxyUser, IxyRole, string>, IDbContext
     {
         public IxyDbContext(DbContextOptions<IxyDbContext> options)
            : base(options)
@@ -26,7 +26,7 @@ namespace Ixy.Infrastructure.Data
             //builder.Entity<IdentityUserClaim<string>>().ToTable("IxyRole");
             //builder.Entity<IdentityUserLogin<string>>().ToTable("IxyUserLogin");
 
-            
+
         }
 
         public DbSet<MenuItem> MenuItems { get; set; }

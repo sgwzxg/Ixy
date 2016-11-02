@@ -3,6 +3,7 @@ using Ixy.Application.ViewModels.AccountViewModels;
 using Ixy.Core.Model.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
@@ -13,13 +14,13 @@ using System.Threading.Tasks;
 namespace Ixy.Web.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : IxyController
     {
         private readonly UserManager<IxyUser> _userManager;
         private readonly SignInManager<IxyUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
-        private readonly ILogger _logger;
+        protected readonly ILogger _logger;
 
         public AccountController(
             UserManager<IxyUser> userManager,

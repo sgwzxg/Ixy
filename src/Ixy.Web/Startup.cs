@@ -49,7 +49,7 @@ namespace Ixy.Web
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddIdentity<IxyUser, IdentityRole>(options =>
+            services.AddIdentity<IxyUser, IxyRole>(options =>
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequiredLength = 8;
