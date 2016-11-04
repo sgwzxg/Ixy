@@ -30,5 +30,6 @@ namespace Ixy.Infrastructure.Data
         }
 
         public DbSet<MenuItem> MenuItems { get; set; }
+        public DbSet<Post> Posts { get; set; }
     }
 }

@@ -233,6 +233,7 @@
 /// <reference path="js/bootstrap-paginator.js" />
 /// <reference path="js/site.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
+/// <reference path="lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js" />
 /// <reference path="lib/icheck/icheck.min.js" />
 /// <reference path="lib/jquery/dist/jquery.js" />
 /// <reference path="lib/jquery-validation/dist/jquery.validate.js" />

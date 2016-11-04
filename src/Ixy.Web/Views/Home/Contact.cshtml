@@ -18,15 +18,9 @@
 </div>
 @section scripts{
     <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckeditor/config.js"></script>
     <script type="text/javascript">
-        CKEDITOR.editorConfig = function (config) {
-            config.language = 'es';
-            config.uiColor = '#F7B42C';
-            config.height = 300;
-            config.toolbarCanCollapse = true;
-        };
-
+       
         var editor = CKEDITOR.replace('editor');
-      
     </script>
 }
