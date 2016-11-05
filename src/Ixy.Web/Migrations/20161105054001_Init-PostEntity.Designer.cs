@@ -8,9 +8,10 @@ using Ixy.Infrastructure.Data;
 namespace Ixy.Web.Migrations
 {
     [DbContext(typeof(IxyDbContext))]
-    partial class IxyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161105054001_Init-PostEntity")]
+    partial class InitPostEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1");

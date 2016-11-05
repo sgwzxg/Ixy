@@ -46,7 +46,7 @@ namespace Ixy.Web
             // Add data context
             services.AddDbContext<IxyDbContext>(options =>
             {
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),b=>b.MigrationsAssembly("Ixy.Web"));
             });
 
             services.AddIdentity<IxyUser, IxyRole>(options =>
