@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    ViewBag.Title = "Create Post";
+}
+<div class="row">
+    Title: <input id="title" type="text" />
+
+    <div id="editor1"></div>
+    <button id="btnSave" class="btn btn-primary" type="button">Save</button>
+</div>
+@section scripts{
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckeditor/config.js"></script>
+    <script src="~/js/backend-post-index.js"></script>
+}

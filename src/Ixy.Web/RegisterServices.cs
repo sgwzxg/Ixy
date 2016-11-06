@@ -21,7 +21,8 @@ namespace Ixy.Web
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IMenuService, MenuService>();
             services.AddScoped<IMenuRepository, MenuRepository>();
-
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IPostRepository, PostRepository>();
             services.Configure<AuthMessageSenderOptions>(configuration);
         }
     }

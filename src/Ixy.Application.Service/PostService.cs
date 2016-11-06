@@ -20,9 +20,10 @@ namespace Ixy.Application.Service
             this._repository = postRepository;
         }
 
-        public Task<bool> AddAsync(Post entity)
+        public async Task<bool> AddAsync(Post entity)
         {
-            throw new NotImplementedException();
+            _unitOfWork.RegisterNew(entity);
+            return await _unitOfWork.CommitAsync();
         }
 
         public Task<bool> DeleteAsync(Post entity)
@@ -35,9 +36,9 @@ namespace Ixy.Application.Service
             throw new NotImplementedException();
         }
 
-        public Task<List<Post>> GetAllAsync()
+        public async Task<List<Post>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _repository.GetAllAsync();
         }
 
         public Task<Post> GetAsync(string id)

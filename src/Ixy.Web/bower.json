@@ -10,6 +10,7 @@
     "jstree": "3.3.0",
     "iCheck": "1.0.2",
     "eonasdan-bootstrap-datetimepicker": "4.17.37",
-    "Chart.js": "2.0.2"
+    "Chart.js": "2.0.2",
+    "layer": "*"
   }
 }

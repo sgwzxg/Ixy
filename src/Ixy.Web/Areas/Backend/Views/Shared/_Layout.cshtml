@@ -11,7 +11,6 @@
         <link rel="stylesheet" href="~/css/AdminLTE.css" />
         <!--Skin-->
         <link rel="stylesheet" href="~/css/skins/_all-skins.min.css" />
-        @*<link rel="stylesheet" href="~/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />*@
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -20,7 +19,6 @@
         <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
         <link rel="stylesheet" href="~/css/AdminLTE.css" />
         <link rel="stylesheet" href="~/css/skins/_all-skins.min.css" />
-        @*<link rel="stylesheet" href="~/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />*@
     </environment>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -41,7 +39,7 @@
                 </a>
                 @*<div class="navbar-custom-menu">*@
                 <div class="nav navbar-nav navbar-right">
-                   
+
                     <ul class="nav navbar-nav">
                         <li>
                             @await Html.PartialAsync("_LoginPartial")
@@ -142,13 +140,13 @@
 
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-share"></i> <span>Other</span>
+                            <i class="fa fa-share"></i> <span>Posts</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a asp-controller="" asp-action=""><i class="fa fa-circle-o"></i> Level</a></li>
+                            <li><a asp-controller="Post" asp-action="Index" asp-area="Backend"><i class="fa fa-circle-o"></i> Post</a></li>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-circle-o"></i> Level One
@@ -220,7 +218,7 @@
         <script src="~/js/app.js" asp-append-version="true"></script>
         <script type="text/javascript" src="~/lib/moment/min/moment.min.js"></script>
         <script type="text/javascript" src="~/js/bootstrap-paginator.js"></script>
-        <script type="text/javascript" src="~/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.js"></script>
+        <script type="text/javascript" src="~/lib/layer/build/layer.js"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
@@ -234,7 +232,7 @@
         <script src="~/js/app.js"></script>
         <script type="text/javascript" src="~/lib/moment/min/moment.min.js"></script>
         <script type="text/javascript" src="~/js/bootstrap-paginator.js"></script>
-        <script type="text/javascript" src="~/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+        <script type="text/javascript" src="~/lib/layer/build/layer.js"></script>
     </environment>
 
     <script language="javascript">

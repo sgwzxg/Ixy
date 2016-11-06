@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<Ixy.Core.Model.Post>
+@{
+    ViewBag.Title = "Post Manager";
+}
+<a asp-action="Create" asp-controller="Post" asp-area="Backend">Create</a>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Author</td>
+                <td>Title</td>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            @foreach (var role in Model)
+            {
+                <tr>
+                    <td>@role.Id</td>
+                    <td>@role.Author</td>
+                    <td>@role.Title</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="paging-toolbar">
+        <ul id="grid_paging_part"></ul>
+    </div>
+</div>
