@@ -38,3 +38,5 @@ https://developers.facebook.com/apps
 
 
 https://lipis.github.io/bootstrap-social/
+
+https://startbootstrap.com/template-overviews/blog-post/

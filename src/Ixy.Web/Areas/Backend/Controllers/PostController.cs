@@ -49,6 +49,7 @@ namespace Ixy.Web.Areas.Backend.Controllers
                 });
             }
             postEntity.Id = Guid.NewGuid().ToString();
+            postEntity.Author = "IxyAdmin";
             var result = await _service.AddAsync(postEntity);
 
             if (!result)

@@ -32,5 +32,10 @@ namespace Ixy.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult BlogPost()
+        {
+            return View();
+        }
     }
 }
