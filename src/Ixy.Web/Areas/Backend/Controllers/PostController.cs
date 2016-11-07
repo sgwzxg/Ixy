@@ -1,6 +1,7 @@
 ﻿using Ixy.Application.Service.Interface;
 using Ixy.Core.Model;
 using Ixy.Web.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Ixy.Web.Areas.Backend.Controllers
 {
+    [Authorize]
     [Area("Backend")]
     public class PostController : IxyController
     {
