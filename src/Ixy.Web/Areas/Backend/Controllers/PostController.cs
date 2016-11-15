@@ -54,10 +54,10 @@ namespace Ixy.Web.Areas.Backend.Controllers
 
             if (!result)
             {
-                return Json(new { Result = "Success" });
+                return Json(new { Result = "Failed" });
             }
 
-            return Json(new { Result = "Failed" });
+            return Json(new { Result = "Success" });
 
         }
     }

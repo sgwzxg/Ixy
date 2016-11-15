@@ -12,51 +12,49 @@ function savePost() {
             "Content": editor.getData()
         }
     };
-    debugger;
+
     $.ajax({
-        type: "Post",
         url: '/Backend/Post/Create',
         data: postData,
-        success: function (data) {
-            alert("success");
-            debugger;
-            if (data.result == "Success") {
-                layer.tips("success", "");
-            } else {
-                layer.tips(data.message, "#btnSave");
-            };
-        },
-        error: function (event, jqxhr, settings, thrownError) {
-            
-            debugger;
-            var message;
-            var statusErrorMap = {
-                '400': "Server understood the request, but request content was invalid.",
-                '401': "Unauthorized access.",
-                '403': "Forbidden resource can't be accessed.",
-                '404': "Not found.",
-                '500': "Internal server error.",
-                '503': "Service unavailable."
-            };
-            layer.tips(event.status, "error");
-            //console.log(event.status);
-            //console.log(error);
-            if (event.status) {
-                message = statusErrorMap[x.status];
-                if (!message) {
-                    message = "Unknown Error \n.";
-                }
-            } else if (error == 'parsererror') {
-                message = "Error.\nParsing JSON Request failed.";
-            } else if (error == 'timeout') {
-                message = "Request Time out.";
-            } else if (error == 'abort') {
-                message = "Request was aborted by the server";
-            } else {
-                message = "Unknown Error \n.";
-            }
+        type: "Post"
+    })
+    .done(function (data) {
 
+        if (data.result == "Success") {
+            layer.alert("Save sucess0", {
+                title: 'Tip'
+                , btn:['yes']
+                , icon: 6
+                , yes: function (index) {
+                    layer.close(index);
+                    location.href = '/Backend/Post/Index';
+                }
+            });
+
+        } else {
+            layer.tips(data.result, "#btnSave");
+        };
+    })
+    .fail(function (xhr, status, errorThrown) {
+        var message;
+        var statusErrorMap = {
+            '400': "Server understood the request, but request content was invalid.",
+            '401': "Unauthorized access.",
+            '403': "Forbidden resource can't be accessed.",
+            '404': "Not found.",
+            '500': "Internal server error.",
+            '503': "Service unavailable."
+        };
+        layer.tips("Sorry, there was a problem!", "error");
+        console.log("Error: " + errorThrown);
+        console.log("Status: " + status);
+        message = statusErrorMap[status];
+        if (message) {
             layer.tips(message, "");
         }
+        console.dir(xhr);
+    })
+    .always(function (xhr, status) {
+        layer.tips("The request is complete!", "");
     });
 }
