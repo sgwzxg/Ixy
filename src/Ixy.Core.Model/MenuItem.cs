@@ -18,7 +18,7 @@ namespace Ixy.Core.Model
     public class TreeNode
     {
         public string Id { get; set; }
-        public string Name { get; set; }
-        public string ParentId { get; set; }
+        public string Text { get; set; }
+        public string Parent { get; set; }
     }
 }

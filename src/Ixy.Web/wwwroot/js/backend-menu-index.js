@@ -13,17 +13,19 @@ $(function () {
 });
 
 function initTree() {
-    $.jstree.destroy();
+   // $.jstree.destroy();
+    
     $.ajax({
         type: "Get",
-        url: "Backend/Menu/GetMenuTreeData",
+        url: "/Backend/Menu/GetMenuTreeData",
         success: function (data) {
+            debugger;
             $('#treeDiv').jstree({
                 'core': {
-                    'data': data,
-                    "multiple": false
-                },
-                "plugins": ["state", "types", "wholerow"]
+                    'data': data//,
+                    //"multiple": false
+                }//,
+                //"plugins": ["state", "types", "wholerow"]
             })
             $("#treeDiv").on("ready.jstree", function (e, data) {
                 data.instance.open_all();
@@ -45,7 +47,7 @@ function loadTables(startPage, pageSize) {
     $("#checkAll").prop("checked", false);
     $.ajax({
         type: "GET",
-        url: "Backend/Menu/GetByParent?startPage=" + startPage + "&pageSize=" + pageSize + "&parentId=" + selectedMenuId,
+        url: "/Backend/Menu/GetByParent?startPage=" + startPage + "&pageSize=" + pageSize + "&parentId=" + selectedMenuId,
         success: function (data) {
             $.each(data.rows, function (i, item) {
                 var tr = "<tr>";
@@ -61,7 +63,7 @@ function loadTables(startPage, pageSize) {
             })
             var elment = $("#grid_paging_part");
             if (data.rowCount > 0) {
-                var options = { 
+                var options = {
                     bootstrapMajorVersion: 3,
                     currentPage: startPage,
                     numberOfPages: data.rowsCount,
@@ -115,7 +117,7 @@ function add(type) {
 function edit(id) {
     $.ajax({
         type: "Get",
-        url: "Backend/Menu/Get?id=" + id + "&_t=" + new Date(),
+        url: "/Backend/Menu/Get?id=" + id + "&_t=" + new Date(),
         success: function (data) {
             $("#Id").val(data.id);
             $("#ParentId").val(data.parentId);
@@ -148,7 +150,7 @@ function save() {
             "Description": $("#Description").val()
         }
     };
-    
+
     $.ajax({
         type: "Post",
         url: "/Backend/Menu/Edit",
@@ -191,7 +193,7 @@ function save() {
                 message = "Unknown Error \n.";
             }
 
-            layer.tips(message,"");
+            layer.tips(message, "");
         }
     });
 };

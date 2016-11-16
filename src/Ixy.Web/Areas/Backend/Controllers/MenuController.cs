@@ -56,7 +56,7 @@ namespace Ixy.Web.Areas.Backend.Controllers
             List<TreeNode> treeModels = new List<TreeNode>();
             foreach (var menu in menus)
             {
-                treeModels.Add(new TreeNode() { Id = menu.Id.ToString(), Name = menu.Name, ParentId = menu.ParentId == Guid.Empty.ToString() ? "#" : menu.ParentId });
+                treeModels.Add(new TreeNode() { Id = menu.Id.ToString(), Text = menu.Name, Parent = menu.ParentId == Guid.Empty.ToString() ? "#" : menu.ParentId });
             }
             return Json(treeModels);
         }
