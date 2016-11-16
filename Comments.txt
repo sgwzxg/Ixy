@@ -14,17 +14,18 @@ Ixy.Core.Model.Identity
 
 
 /*
-dotnet ef migrations add MyFirstMigration --context BloggingContext
-dotnet ef database update --context BloggingContext
+dotnet ef migrations add Initialize_DbContext --context IxyDbContext
+dotnet ef database update Initialize_DbContext --context IxyDbContext
 */
 
 dotnet ef migrations add {MigrationName}
 dotnet ef database update 
 
 Add-Migration -Name Init-PostEntity -OutputDir Migrations\IxyDbContextMigrations -Context IxyDbContext
-dotnet ef migrations add Init-IxyDbContext
-
 Update-Database -Migration Init-PostEntity -Context IxyDbContext
+dotnet ef migrations add Init-IxyDbContext
+Add-Migration -Name Init_IxyDbContext -Context IxyDbContext
+Update-Database -Migration Init_IxyDbContext -Context IxyDbContext
 
 
 Issues:

@@ -228,6 +228,7 @@
 /// <reference path="ckeditor/samples/toolbarconfigurator/lib/codemirror/show-hint.js" />
 /// <reference path="ckeditor/styles.js" />
 /// <reference path="js/app.js" />
+/// <reference path="js/backend_layout_menu.js" />
 /// <reference path="js/backend-menu-index.js" />
 /// <reference path="js/backend-post-index.js" />
 /// <reference path="js/backend-role-index.js" />

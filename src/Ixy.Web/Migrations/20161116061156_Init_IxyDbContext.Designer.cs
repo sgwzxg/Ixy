@@ -8,8 +8,8 @@ using Ixy.Infrastructure.Data;
 namespace Ixy.Web.Migrations
 {
     [DbContext(typeof(IxyDbContext))]
-    [Migration("20161105054001_Init-PostEntity")]
-    partial class InitPostEntity
+    [Migration("20161116061156_Init_IxyDbContext")]
+    partial class Init_IxyDbContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
