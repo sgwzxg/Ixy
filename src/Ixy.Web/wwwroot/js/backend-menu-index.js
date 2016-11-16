@@ -22,10 +22,10 @@ function initTree() {
             debugger;
             $('#treeDiv').jstree({
                 'core': {
-                    'data': data//,
-                    //"multiple": false
-                }//,
-                //"plugins": ["state", "types", "wholerow"]
+                    'data': data,
+                    "multiple": false
+                },
+                "plugins": ["state", "types", "wholerow"]
             })
             $("#treeDiv").on("ready.jstree", function (e, data) {
                 data.instance.open_all();
@@ -47,7 +47,7 @@ function loadTables(startPage, pageSize) {
     $("#checkAll").prop("checked", false);
     $.ajax({
         type: "GET",
-        url: "/Backend/Menu/GetByParent?startPage=" + startPage + "&pageSize=" + pageSize + "&parentId=" + selectedMenuId,
+        url: "/Backend/Menu/GetByParent?startPageIndex=" + startPage + "&pageSize=" + pageSize + "&parentId=" + selectedMenuId,
         success: function (data) {
             $.each(data.rows, function (i, item) {
                 var tr = "<tr>";
