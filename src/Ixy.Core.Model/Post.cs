@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ixy.Core.Model
 {
-    public class Post : IAggregateRoot
+    public class Post : BaseEntity
     {
-        public string Id { get; set; }
-
         public string Title { get; set; }
 
         public string Author { get; set; }
@@ -20,9 +18,9 @@ namespace Ixy.Core.Model
 
         public bool Published { get; set; }
 
-        public DateTime? CreatedDateTime { get; set; }
+        public string CategoryId { get; set; }
 
-        public DateTime? LastUpdateDateTime { get; set; }
+        public virtual Category Category { get; set; }
 
     }
 }

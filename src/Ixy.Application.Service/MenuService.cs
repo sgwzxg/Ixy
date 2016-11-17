@@ -14,10 +14,10 @@ namespace Ixy.Application.Service
         private IUnitOfWork _unitOfWork;
         private IMenuRepository _repository;
 
-        public MenuService(IUnitOfWork unitOfWork, IMenuRepository menuRepository)
+        public MenuService(IUnitOfWork unitOfWork, IMenuRepository repository)
         {
             this._unitOfWork = unitOfWork;
-            this._repository = menuRepository;
+            this._repository = repository;
         }
 
         public async Task<MenuItem> GetAsync(string id)

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Ixy.Core.Interface
 {
-    public interface IPostRepository : IRepository<Post>
+    public interface ICategoryRepository : IRepository<Category>
     {
 
     }
 
+  
 }

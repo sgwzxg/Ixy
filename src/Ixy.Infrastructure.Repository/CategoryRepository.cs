@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace Ixy.Infrastructure.Repository
 {
-    public class PostRepository : BaseRepository<Post>, IPostRepository
+    public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
     {
-        public PostRepository(IDbContext dbContext) : base(dbContext)
+        public CategoryRepository(IDbContext dbContext) : base(dbContext)
         {
 
         }
     }
-    
 }

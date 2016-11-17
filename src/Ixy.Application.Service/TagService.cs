@@ -9,45 +9,45 @@ using Ixy.Core.Interface;
 
 namespace Ixy.Application.Service
 {
-    public class PostService : IPostService
+    public class TagService : ITagService
     {
         private IUnitOfWork _unitOfWork;
-        private IPostRepository _repository;
+        private ITagRepository _repository;
 
-        public PostService(IUnitOfWork unitOfWork, IPostRepository repository)
+        public TagService(IUnitOfWork unitOfWork, ITagRepository repository)
         {
             this._unitOfWork = unitOfWork;
             this._repository = repository;
         }
 
-        public async Task<bool> AddAsync(Post entity)
+        public async Task<bool> AddAsync(Tag entity)
         {
             _unitOfWork.RegisterNew(entity);
             return await _unitOfWork.CommitAsync();
         }
 
-        public Task<bool> DeleteAsync(Post entity)
+        public Task<bool> DeleteAsync(Tag entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> EditAsync(Post entity)
+        public Task<bool> EditAsync(Tag entity)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<Post>> GetAllAsync()
+        public async Task<List<Tag>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
         }
 
-        public async Task<Post> GetAsync(string id)
+        public async Task<Tag> GetAsync(string id)
         {
             var ps = await _repository.GetAsync(t => t.Id == id);
             return ps.FirstOrDefault();
         }
 
-        public Task<List<Post>> GetAsync(int startPage, int pageSize)
+        public Task<List<Tag>> GetAsync(int startPage, int pageSize)
         {
             throw new NotImplementedException();
         }

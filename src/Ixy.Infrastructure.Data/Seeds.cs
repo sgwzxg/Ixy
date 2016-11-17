@@ -23,7 +23,7 @@ namespace Ixy.Infrastructure.Data
                 {
                     var passwordHash = new PasswordHasher<IxyUser>();
                     var upperInvariantLookupNormalizer = new UpperInvariantLookupNormalizer();
-                    
+
                     var user = new IxyUser()
                     {
                         Email = "sgwzxg@hotmail.com",
@@ -45,7 +45,7 @@ namespace Ixy.Infrastructure.Data
                 {
                     context.MenuItems.AddRange(GenerateDefaultMenuItems());
                 }
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
         }
 

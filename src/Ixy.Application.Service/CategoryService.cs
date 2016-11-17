@@ -9,45 +9,45 @@ using Ixy.Core.Interface;
 
 namespace Ixy.Application.Service
 {
-    public class PostService : IPostService
+    public class CategoryService : ICategoryService
     {
         private IUnitOfWork _unitOfWork;
-        private IPostRepository _repository;
+        private ICategoryRepository _repository;
 
-        public PostService(IUnitOfWork unitOfWork, IPostRepository repository)
+        public CategoryService(IUnitOfWork unitOfWork, ICategoryRepository repository)
         {
             this._unitOfWork = unitOfWork;
             this._repository = repository;
         }
 
-        public async Task<bool> AddAsync(Post entity)
+        public async Task<bool> AddAsync(Category entity)
         {
             _unitOfWork.RegisterNew(entity);
             return await _unitOfWork.CommitAsync();
         }
 
-        public Task<bool> DeleteAsync(Post entity)
+        public Task<bool> DeleteAsync(Category entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> EditAsync(Post entity)
+        public Task<bool> EditAsync(Category entity)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<Post>> GetAllAsync()
+        public async Task<List<Category>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
         }
 
-        public async Task<Post> GetAsync(string id)
+        public async Task<Category> GetAsync(string id)
         {
             var ps = await _repository.GetAsync(t => t.Id == id);
             return ps.FirstOrDefault();
         }
 
-        public Task<List<Post>> GetAsync(int startPage, int pageSize)
+        public Task<List<Category>> GetAsync(int startPage, int pageSize)
         {
             throw new NotImplementedException();
         }

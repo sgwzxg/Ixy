@@ -9,45 +9,45 @@ using Ixy.Core.Interface;
 
 namespace Ixy.Application.Service
 {
-    public class PostService : IPostService
+    public class CommentService : ICommentService
     {
         private IUnitOfWork _unitOfWork;
-        private IPostRepository _repository;
+        private ICommentRepository _repository;
 
-        public PostService(IUnitOfWork unitOfWork, IPostRepository repository)
+        public CommentService(IUnitOfWork unitOfWork, ICommentRepository repository)
         {
             this._unitOfWork = unitOfWork;
             this._repository = repository;
         }
 
-        public async Task<bool> AddAsync(Post entity)
+        public async Task<bool> AddAsync(Comment entity)
         {
             _unitOfWork.RegisterNew(entity);
             return await _unitOfWork.CommitAsync();
         }
 
-        public Task<bool> DeleteAsync(Post entity)
+        public Task<bool> DeleteAsync(Comment entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> EditAsync(Post entity)
+        public Task<bool> EditAsync(Comment entity)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<Post>> GetAllAsync()
+        public async Task<List<Comment>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
         }
 
-        public async Task<Post> GetAsync(string id)
+        public async Task<Comment> GetAsync(string id)
         {
             var ps = await _repository.GetAsync(t => t.Id == id);
             return ps.FirstOrDefault();
         }
 
-        public Task<List<Post>> GetAsync(int startPage, int pageSize)
+        public Task<List<Comment>> GetAsync(int startPage, int pageSize)
         {
             throw new NotImplementedException();
         }
