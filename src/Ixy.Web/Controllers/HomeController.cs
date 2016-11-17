@@ -3,15 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Ixy.Application.Service.Interface;
+using Microsoft.Extensions.Logging;
 
 namespace Ixy.Web.Controllers
 {
     [RequireHttps]
-    public class HomeController : Controller
+    public class HomeController : IxyController
     {
-        public IActionResult Index()
+        private readonly IPostService _service;
+        protected readonly ILogger _logger;
+
+        public HomeController(IPostService postService, ILoggerFactory loggerFactory)
         {
-            return View();
+            _service = postService;
+            _logger = loggerFactory.CreateLogger<HomeController>();
+        }
+
+        public async Task<IActionResult> Index()
+        {
+
+            var posts = await _service.GetAllAsync();
+            return View(posts);
         }
 
         public IActionResult About()
@@ -33,9 +46,12 @@ namespace Ixy.Web.Controllers
             return View();
         }
 
-        public IActionResult BlogPost()
+        public async Task<IActionResult> BlogPost(string id)
         {
-            return View();
+            var p = await _service.GetAsync(id);
+
+
+            return View(p);
         }
     }
 }

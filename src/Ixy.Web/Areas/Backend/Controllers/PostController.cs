@@ -50,6 +50,7 @@ namespace Ixy.Web.Areas.Backend.Controllers
             }
             postEntity.Id = Guid.NewGuid().ToString();
             postEntity.Author = "IxyAdmin";
+            postEntity.CreatedDateTime = DateTime.Now;
             var result = await _service.AddAsync(postEntity);
 
             if (!result)

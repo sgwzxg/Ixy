@@ -41,9 +41,10 @@ namespace Ixy.Application.Service
             return await _repository.GetAllAsync();
         }
 
-        public Task<Post> GetAsync(string id)
+        public async Task<Post> GetAsync(string id)
         {
-            throw new NotImplementedException();
+            var ps = await _repository.GetAsync(t => t.Id == id);
+            return ps.FirstOrDefault();
         }
 
         public Task<List<Post>> GetAsync(int startPage, int pageSize)

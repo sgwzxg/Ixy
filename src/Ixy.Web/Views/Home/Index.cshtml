@@ -1,17 +1,29 @@
 ﻿@{
     ViewData["Title"] = "Blog Home";
 }
+@model IEnumerable<Ixy.Core.Model.Post>
 
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8">
             <h1 class="page-header">
-                Page Heading
-                <small>Secondary Text</small>
+                Ixy
+                <small>Heart</small>
             </h1>
+            @foreach (var p in Model)
+            {
+                <h2>
+                    <a asp-controller="Home" asp-action="BlogPost" asp-route-id="@p.Id" >@p.Title</a>
+                </h2>
+                <p class="lead">
+                    by <a href="index.php">@p.Author</a>
+                </p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on @p.CreatedDateTime</p>
+                <hr>
+            }
             <!-- First Blog Post -->
-            <h2>
+            @*<h2>
                 <a href="#">Blog Post Title</a>
             </h2>
             <p class="lead">
@@ -23,7 +35,7 @@
             <hr>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
             <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-            <hr>
+            <hr>*@
             <!-- Second Blog Post -->
             <h2>
                 <a href="#">Blog Post Title</a>
