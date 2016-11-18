@@ -1,4 +1,4 @@
-﻿using Ixy.Application.Authentication.Github.Builder;
+﻿using Ixy.AppService.Authentication.Github.Builder;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Authentication;

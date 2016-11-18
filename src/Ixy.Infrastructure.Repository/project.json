@@ -2,6 +2,7 @@
   "version": "1.0.0-*",
 
   "dependencies": {
+    "Ixy.Core": "1.0.0-*",
     "Ixy.Core.Interface": "1.0.0-*",
     "Ixy.Infrastructure.Interface": "1.0.0-*",
     "NETStandard.Library": "1.6.0"

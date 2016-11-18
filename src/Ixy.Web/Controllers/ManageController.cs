@@ -1,6 +1,6 @@
-﻿using Ixy.Application.Service.Interface;
-using Ixy.Application.ViewModels.ManageViewModels;
-using Ixy.Core.Model.Identity;
+﻿using Ixy.AppService.Interface;
+using Ixy.Core.Identity;
+using Ixy.Web.ViewModels.ManageViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

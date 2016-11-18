@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Ixy.Application.Service.Interface;
+using Ixy.AppService.Interface;
 using Microsoft.Extensions.Logging;
 
 namespace Ixy.Web.Controllers

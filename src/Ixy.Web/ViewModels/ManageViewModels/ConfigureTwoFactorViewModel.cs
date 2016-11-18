@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 
-namespace Ixy.Application.ViewModels.ManageViewModels
+namespace Ixy.Web.ViewModels.ManageViewModels
 {
     public class ConfigureTwoFactorViewModel
     {

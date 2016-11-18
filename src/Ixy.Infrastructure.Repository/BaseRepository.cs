@@ -1,6 +1,6 @@
 ﻿using Ixy.Core.Interface;
-using Ixy.Core.Model.Interface;
 using Ixy.Infrastructure.Interface;
+using Ixy.Infrastructure.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

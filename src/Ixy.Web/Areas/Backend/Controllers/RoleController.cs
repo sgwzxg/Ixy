@@ -1,4 +1,4 @@
-using Ixy.Core.Model.Identity;
+using Ixy.Core.Identity;
 using Ixy.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

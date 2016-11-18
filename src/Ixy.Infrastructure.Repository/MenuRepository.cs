@@ -1,6 +1,7 @@
 ﻿using Ixy.Core.Interface;
-using Ixy.Core.Model;
+using Ixy.Core;
 using Ixy.Infrastructure.Interface;
+using Ixy.Infrastructure.Repository.Interface;
 
 namespace Ixy.Infrastructure.Repository
 {

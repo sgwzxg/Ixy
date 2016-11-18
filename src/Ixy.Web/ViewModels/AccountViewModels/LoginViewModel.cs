@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ixy.Application.ViewModels.AccountViewModels
+namespace Ixy.Web.ViewModels.AccountViewModels
 {
     public class LoginViewModel
     {

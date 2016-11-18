@@ -1,4 +1,4 @@
-﻿namespace Ixy.Application.ViewModels.ManageViewModels
+﻿namespace Ixy.Web.ViewModels.ManageViewModels
 {
     public class RemoveLoginViewModel
     {

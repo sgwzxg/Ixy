@@ -1,5 +1,5 @@
-﻿using Ixy.Application.Authentication.Github.Builder;
-using Ixy.Core.Model.Identity;
+﻿using Ixy.AppService.Authentication.Github.Builder;
+using Ixy.Core.Identity;
 using Ixy.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Builder;

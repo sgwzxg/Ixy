@@ -1,10 +1,11 @@
-﻿using Ixy.Application.Service;
-using Ixy.Application.Service.Interface;
+﻿using Ixy.AppService;
+using Ixy.AppService.Interface;
 using Ixy.Core.Interface;
 using Ixy.Infrastructure;
 using Ixy.Infrastructure.Data;
 using Ixy.Infrastructure.Interface;
 using Ixy.Infrastructure.Repository;
+using Ixy.Infrastructure.Repository.Interface;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
