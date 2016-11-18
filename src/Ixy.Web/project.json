@@ -54,7 +54,8 @@
     "Microsoft.AspNetCore.Authentication.OAuth": "1.0.0",
     "Ixy.AppService.Authentication": "1.0.0-*",
     "Microsoft.AspNetCore.Authentication.Facebook": "1.0.0",
-    "Microsoft.EntityFrameworkCore.Design": "1.0.1"
+    "Microsoft.EntityFrameworkCore.Design": "1.0.1",
+    "NLog.Extensions.Logging": "1.0.0-rtm-alpha4"
   },
 
   "tools": {
