@@ -9,6 +9,21 @@ namespace Ixy.Web.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CreateDateTime = table.Column<DateTime>(nullable: false),
+                    CreatedDateTime = table.Column<DateTime>(nullable: true),
+                    LastUpdatedDateTime = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -53,8 +68,10 @@ namespace Ixy.Web.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     Code = table.Column<string>(nullable: true),
+                    CreatedDateTime = table.Column<DateTime>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Icon = table.Column<string>(nullable: true),
+                    LastUpdatedDateTime = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     ParentId = table.Column<string>(nullable: true),
                     Serial = table.Column<int>(nullable: false),
@@ -67,21 +84,17 @@ namespace Ixy.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Posts",
+                name: "Tags",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    Author = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(nullable: true),
                     CreatedDateTime = table.Column<DateTime>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    LastUpdateDateTime = table.Column<DateTime>(nullable: true),
-                    Published = table.Column<bool>(nullable: false),
-                    Title = table.Column<string>(nullable: true)
+                    LastUpdatedDateTime = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Posts", x => x.Id);
+                    table.PrimaryKey("PK_Tags", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,6 +109,31 @@ namespace Ixy.Web.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Posts",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Author = table.Column<string>(nullable: true),
+                    CategoryId = table.Column<string>(nullable: true),
+                    Content = table.Column<string>(nullable: true),
+                    CreatedDateTime = table.Column<DateTime>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    LastUpdatedDateTime = table.Column<DateTime>(nullable: true),
+                    Published = table.Column<bool>(nullable: false),
+                    Title = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Posts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Posts_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -184,6 +222,35 @@ namespace Ixy.Web.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Content = table.Column<string>(nullable: true),
+                    CreatedDateTime = table.Column<DateTime>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Ip = table.Column<string>(nullable: true),
+                    LastUpdatedDateTime = table.Column<DateTime>(nullable: true),
+                    NickName = table.Column<string>(nullable: true),
+                    PostId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_Posts_PostId",
+                        column: x => x.PostId,
+                        principalTable: "Posts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_PostId",
+                table: "Comments",
+                column: "PostId");
+
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
@@ -199,6 +266,11 @@ namespace Ixy.Web.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Posts_CategoryId",
+                table: "Posts",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -229,10 +301,13 @@ namespace Ixy.Web.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Comments");
+
+            migrationBuilder.DropTable(
                 name: "MenuItems");
 
             migrationBuilder.DropTable(
-                name: "Posts");
+                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -250,10 +325,16 @@ namespace Ixy.Web.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Posts");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
         }
     }
 }

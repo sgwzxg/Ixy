@@ -15,7 +15,49 @@ namespace Ixy.Web.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1");
 
-            modelBuilder.Entity("Ixy.Core.Model.Identity.IxyRole", b =>
+            modelBuilder.Entity("Ixy.Core.Category", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<DateTime>("CreateDateTime");
+
+                    b.Property<DateTime?>("CreatedDateTime");
+
+                    b.Property<DateTime?>("LastUpdatedDateTime");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Ixy.Core.Comment", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime?>("CreatedDateTime");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Ip");
+
+                    b.Property<DateTime?>("LastUpdatedDateTime");
+
+                    b.Property<string>("NickName");
+
+                    b.Property<string>("PostId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Ixy.Core.Identity.IxyRole", b =>
                 {
                     b.Property<string>("Id");
 
@@ -36,7 +78,7 @@ namespace Ixy.Web.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("Ixy.Core.Model.Identity.IxyUser", b =>
+            modelBuilder.Entity("Ixy.Core.Identity.IxyUser", b =>
                 {
                     b.Property<string>("Id");
 
@@ -85,15 +127,19 @@ namespace Ixy.Web.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Ixy.Core.Model.MenuItem", b =>
+            modelBuilder.Entity("Ixy.Core.MenuItem", b =>
                 {
                     b.Property<string>("Id");
 
                     b.Property<string>("Code");
 
+                    b.Property<DateTime?>("CreatedDateTime");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("Icon");
+
+                    b.Property<DateTime?>("LastUpdatedDateTime");
 
                     b.Property<string>("Name");
 
@@ -110,11 +156,13 @@ namespace Ixy.Web.Migrations
                     b.ToTable("MenuItems");
                 });
 
-            modelBuilder.Entity("Ixy.Core.Model.Post", b =>
+            modelBuilder.Entity("Ixy.Core.Post", b =>
                 {
                     b.Property<string>("Id");
 
                     b.Property<string>("Author");
+
+                    b.Property<string>("CategoryId");
 
                     b.Property<string>("Content");
 
@@ -122,7 +170,7 @@ namespace Ixy.Web.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<DateTime?>("LastUpdateDateTime");
+                    b.Property<DateTime?>("LastUpdatedDateTime");
 
                     b.Property<bool>("Published");
 
@@ -130,7 +178,24 @@ namespace Ixy.Web.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("Ixy.Core.Tag", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<DateTime?>("CreatedDateTime");
+
+                    b.Property<DateTime?>("LastUpdatedDateTime");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -219,9 +284,23 @@ namespace Ixy.Web.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Ixy.Core.Comment", b =>
+                {
+                    b.HasOne("Ixy.Core.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId");
+                });
+
+            modelBuilder.Entity("Ixy.Core.Post", b =>
+                {
+                    b.HasOne("Ixy.Core.Category", "Category")
+                        .WithMany("Posts")
+                        .HasForeignKey("CategoryId");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("Ixy.Core.Model.Identity.IxyRole")
+                    b.HasOne("Ixy.Core.Identity.IxyRole")
                         .WithMany("Claims")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -229,7 +308,7 @@ namespace Ixy.Web.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Ixy.Core.Model.Identity.IxyUser")
+                    b.HasOne("Ixy.Core.Identity.IxyUser")
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -237,7 +316,7 @@ namespace Ixy.Web.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Ixy.Core.Model.Identity.IxyUser")
+                    b.HasOne("Ixy.Core.Identity.IxyUser")
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -245,12 +324,12 @@ namespace Ixy.Web.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("Ixy.Core.Model.Identity.IxyRole")
+                    b.HasOne("Ixy.Core.Identity.IxyRole")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Ixy.Core.Model.Identity.IxyUser")
+                    b.HasOne("Ixy.Core.Identity.IxyUser")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
