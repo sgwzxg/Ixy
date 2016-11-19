@@ -105,8 +105,7 @@
       "**/*.cshtml",
       "Areas/**/*.cshtml",
       "appsettings.json",
-      "web.config",
-      "nlog.config"
+      "web.config"
     ]
   },
 
