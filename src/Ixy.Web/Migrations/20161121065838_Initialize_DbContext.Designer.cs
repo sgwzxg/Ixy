@@ -8,17 +8,19 @@ using Ixy.Infrastructure.Data;
 namespace Ixy.Web.Migrations
 {
     [DbContext(typeof(IxyDbContext))]
-    [Migration("20161118145551_Init_IxyDbContext")]
-    partial class Init_IxyDbContext
+    [Migration("20161121065838_Initialize_DbContext")]
+    partial class Initialize_DbContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.1");
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
+                .HasAnnotation("ProductVersion", "1.1.0-rtm-22752");
 
             modelBuilder.Entity("Ixy.Core.Category", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("CreateDateTime");
 
@@ -35,7 +37,8 @@ namespace Ixy.Web.Migrations
 
             modelBuilder.Entity("Ixy.Core.Comment", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Content");
 
@@ -60,7 +63,8 @@ namespace Ixy.Web.Migrations
 
             modelBuilder.Entity("Ixy.Core.Identity.IxyRole", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -74,6 +78,7 @@ namespace Ixy.Web.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
+                        .IsUnique()
                         .HasName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
@@ -81,7 +86,8 @@ namespace Ixy.Web.Migrations
 
             modelBuilder.Entity("Ixy.Core.Identity.IxyUser", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
 
@@ -130,7 +136,8 @@ namespace Ixy.Web.Migrations
 
             modelBuilder.Entity("Ixy.Core.MenuItem", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Code");
 
@@ -159,7 +166,8 @@ namespace Ixy.Web.Migrations
 
             modelBuilder.Entity("Ixy.Core.Post", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Author");
 
@@ -186,7 +194,8 @@ namespace Ixy.Web.Migrations
 
             modelBuilder.Entity("Ixy.Core.Tag", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime?>("CreatedDateTime");
 
@@ -264,8 +273,6 @@ namespace Ixy.Web.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("AspNetUserRoles");
                 });
