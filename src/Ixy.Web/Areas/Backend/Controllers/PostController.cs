@@ -27,7 +27,7 @@ namespace Ixy.Web.Areas.Backend.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var posts =  await _service.GetAllAsync();
+            var posts =  await _service.GetAsync();
             return View(posts);
         }
 

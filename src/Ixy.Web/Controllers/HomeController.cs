@@ -23,7 +23,7 @@ namespace Ixy.Web.Controllers
         public async Task<IActionResult> Index()
         {
 
-            var posts = await _service.GetAllAsync();
+            var posts = await _service.GetAsync();
             return View(posts);
         }
 
@@ -48,7 +48,7 @@ namespace Ixy.Web.Controllers
 
         public async Task<IActionResult> BlogPost(string id)
         {
-            var p = await _service.GetAsync(id);
+            var p = await _service.GetByIdAsync(id);
 
 
             return View(p);

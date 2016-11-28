@@ -5,18 +5,22 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Ixy.Core.Interface;
+using Ixy.Core;
+
 namespace Ixy.Infrastructure.Repository.Interface
 {
-    public interface IRepository<TAggregateRoot> where TAggregateRoot : class, IAggregateRoot
+    public interface IRepository<T> where T : class, IAggregateRoot
     {
-        IQueryable<TAggregateRoot> GetAll();
+        T GetById(string id);
 
-        Task<List<TAggregateRoot>> GetAllAsync();
-        
-        IQueryable<TAggregateRoot> Get(Expression<Func<TAggregateRoot, bool>> predicate);
+        Task<T> GetByIdAsync(string id);
 
-        Task<List<TAggregateRoot>> GetAsync(Expression<Func<TAggregateRoot, bool>> predicate);
+        IQueryable<T> Get();
 
-        IQueryable<TAggregateRoot> LoadPageList(int startPage, int pageSize, Expression<Func<TAggregateRoot, bool>> where, Expression<Func<TAggregateRoot, object>> order);
+        IQueryable<T> Get(Expression<Func<T, bool>> predicate);
+
+        IQueryable<T> Get(Expression<Func<T, bool>> predicate, Expression<Func<T, object>> order, SortType sortType, int size);
+
+        IQueryable<T> Get(Expression<Func<T, bool>> predicate, Expression<Func<T, object>> order, SortType sortType, int startPage, int pageSize);
     }
 }

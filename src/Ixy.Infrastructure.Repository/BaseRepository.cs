@@ -1,4 +1,5 @@
-﻿using Ixy.Core.Interface;
+﻿using Ixy.Core;
+using Ixy.Core.Interface;
 using Ixy.Infrastructure.Interface;
 using Ixy.Infrastructure.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -10,50 +11,115 @@ using System.Threading.Tasks;
 
 namespace Ixy.Infrastructure.Repository
 {
-    public abstract class BaseRepository<TAggregateRoot> :
-        IRepository<TAggregateRoot> where TAggregateRoot : class, IAggregateRoot
+    public abstract class BaseRepository<T> : IRepository<T> where T : class, IAggregateRoot
     {
-        public readonly IQueryable<TAggregateRoot> _entities;
+        public readonly IQueryable<T> _entities;
 
         public BaseRepository(IDbContext dbContext)
         {
-            _entities = dbContext.Set<TAggregateRoot>();
+            _entities = dbContext.Set<T>().AsNoTracking();
         }
 
-        public IQueryable<TAggregateRoot> GetAll()
+        public IQueryable<T> Get()
         {
-            return _entities;
+            return Get(null);
         }
 
-        public async Task<List<TAggregateRoot>> GetAllAsync()
+        public IQueryable<T> Get(Expression<Func<T, bool>> predicate)
         {
-            return await _entities.ToListAsync();
+            return Get(predicate, null, SortType.Asc, 0);
         }
 
-        public IQueryable<TAggregateRoot> Get(Expression<Func<TAggregateRoot, bool>> predicate)
+        public IQueryable<T> Get(
+            Expression<Func<T, bool>> predicate,
+            int size)
         {
-            return _entities;
+            return Get(predicate, null, SortType.Asc, size);
         }
 
-        public async Task<List<TAggregateRoot>> GetAsync(Expression<Func<TAggregateRoot, bool>> predicate)
+        public IQueryable<T> Get(
+            Expression<Func<T, bool>> predicate,
+            int startPage, int pageSize)
         {
-            return await _entities.Where(predicate).ToListAsync();
+            return Get(predicate, null, startPage, pageSize);
         }
 
+        public IQueryable<T> Get(
+            Expression<Func<T, object>> order,
+            SortType sortType, int size)
+        {
+            return Get(null, order, SortType.Asc, size);
+        }
 
-        public IQueryable<TAggregateRoot> LoadPageList(int startPage, int pageSize, Expression<Func<TAggregateRoot, bool>> where, Expression<Func<TAggregateRoot, object>> order)
+        public IQueryable<T> Get(
+            Expression<Func<T, bool>> predicate,
+            Expression<Func<T, object>> order,
+            int startPage, int pageSize)
+        {
+            return Get(predicate, order, SortType.Asc, startPage, pageSize);
+        }
+
+        public IQueryable<T> Get(
+            Expression<Func<T, bool>> predicate,
+            Expression<Func<T, object>> order,
+            SortType sortType, int size)
+        {
+            var entities = _entities;
+            if (predicate != null)
+            {
+                entities = entities.Where(predicate);
+            }
+
+            if (order == null)
+            {
+                order = t => t.Id;
+            }
+
+            if (sortType == SortType.Asc)
+            {
+                entities = entities.OrderBy(order);
+            }
+            else
+            {
+                entities = entities.OrderByDescending(order);
+            }
+
+            if (size > 0)
+            {
+                entities = entities.Take(size);
+            }
+
+            return entities;
+        }
+
+        public IQueryable<T> Get(
+            Expression<Func<T, bool>> predicate,
+            Expression<Func<T, object>> order,
+            SortType sortType, int startPage, int pageSize)
         {
             var result = _entities;
-            if (where != null)
-                result = result.Where(where);
+
+            if (predicate != null)
+                result = result.Where(predicate);
             if (order != null)
+                order = t => t.Id;
+            if (sortType == SortType.Asc)
                 result = result.OrderBy(order);
             else
-                result = result.OrderBy(m => m.Id);
-            //rowCount = result.Count();
+                result = result.OrderByDescending(order);
+
             return result.Skip((startPage - 1) * pageSize).Take(pageSize);
         }
 
+        public T GetById(string id)
+        {
+            return Get(t => t.Id == id).FirstOrDefault();
+        }
+
+        public async Task<T> GetByIdAsync(string id)
+        {
+            return await Get(t => t.Id == id).FirstOrDefaultAsync();
+        }
 
     }
 }

@@ -47,11 +47,11 @@ namespace Ixy.Web.Areas.Backend.Controllers
             return Json(new { Result = "Failed" });
 
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> GetMenuTreeData()
         {
-            var menus = await _service.GetAllAsync();
+            var menus = await _service.GetAsync();
 
             List<TreeNode> treeModels = new List<TreeNode>();
             foreach (var menu in menus)
@@ -63,7 +63,7 @@ namespace Ixy.Web.Areas.Backend.Controllers
 
         public async Task<IActionResult> GetByParent(string parentId, int startPageIndex, int pageSize)
         {
-            var menu = await _service.GetByParentAsync(parentId, startPageIndex, pageSize);
+            var menu = await _service.GetAsync(t => t.ParentId == parentId, startPageIndex, pageSize);
             var rowCount = menu.Count();
             return Json(
                 new
@@ -77,7 +77,7 @@ namespace Ixy.Web.Areas.Backend.Controllers
 
         public async Task<IActionResult> Get(string id)
         {
-            var menu = await _service.GetAsync(id);
+            var menu = await _service.GetByIdAsync(id);
             return Json(menu);
         }
     }
