@@ -31,3 +31,118 @@
         <ul id="grid_paging_part"></ul>
     </div>
 </div>
+
+@section scripts{
+    <script src="~/lib/datatables/media/js/jquery.dataTables.js"></script>
+    <script src="~/lib/datatables/media/js/dataTables.bootstrap.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $('#compilationinfo').on('click', 'a.btn-sm', function (e) {
+                e.preventDefault();
+                var data = table.row($(this).parents('tr')).data();
+                loadUpdatedStatusLogs(data.id);
+            });
+
+            var table = $('#xxx').Datatable({
+                serverSide: true,
+                processing: true,
+                paging: true,
+                ordering: false,
+                order: [],
+                renderer: "bootstrap",
+                searching: false,
+                //stripeClasses: ["odd", "even"],
+                ajax: function (data, callback, settings) {
+                    var param = {};
+                    param.startPageIndex = (data.start / data.length) + 1;
+                    param.pageSize = data.length;
+                    $.ajax({
+                        type: "POST",
+                        url: "/Compilation/GetCompilationData",
+                        data: param,
+                        success: function (result) {
+                            var returnData = {};
+                            returnData.recordsTotal = result.recordsTotal;
+                            //returnData.draw = result.draw;
+                            returnData.recordsFiltered = result.recordsTotal;
+                            returnData.data = result.data;
+                            callback(returnData);
+                        }
+                    });
+                },
+                "columnDefs": [
+                    { "visible": false, "targets": 0 }//hide id column
+                ],
+                columns: [
+                    { data: "id" },
+                    { data: "buildNumber" },
+                    { data: "arch" },
+                    {
+                        data: null, render: function (data, type, row) {
+
+                            var customClass = "label label-info";
+                            switch (data.buildStatus) {
+                                case "BuildDone":
+                                    customClass = "label label-primary";
+                                    break;
+                                case "InProgress":
+                                    customClass = "label label-warning";
+                                    break;
+                                case "Error":
+                                    customClass = "label label-danger";
+                                    break;
+                                case "Completed":
+                                    customClass = "label label-success";
+                                    break;
+                            }
+                            return '<span class="' + customClass + '">' + data.buildStatus + '</span>';
+                        }
+                    },
+                    { data: "createdDateTime" },
+                    { data: "completedDate" },
+                    { data: "lastUpdatedDateTime" },
+                    {
+                        data: null,
+                        className: "center",
+                        defaultContent: '<a href="" class="btn-info btn-sm">History logs</a>'
+
+                    }
+
+                ]
+
+            });
+        });
+
+        function loadUpdatedStatusLogs(compilationId) {
+            var index = layer.load();
+            var param = {};
+            param.compilationId = compilationId;
+            $.ajax({
+                type: "GET",
+                url: "/CompilationLog/LoadHistoryLog",
+                data: param
+            })
+            .done(function (data) {
+                layer.closeAll('loading');
+                $("#tableBody1").html("");
+                $.each(data.rows, function (i, item) {
+                    var tr = "<tr>"
+                    tr += "<td>" + item.statusFrom + "</td>";
+                    tr += "<td>" + item.statusTo + "</td>";
+                    tr += "<td>" + item.updatedBy + "</td>";
+                    tr += "<td>" + item.updatedDateTime + "</td>";
+                    tr += "</tr>";
+                    $("#tableBody1").append(tr);
+                })
+                ;
+                $("#addRootModal").modal("show");
+            })
+            .fail(function (xhr, status, errorThrown) {
+                layer.closeAll('loading');
+                var errorInfo = "Error: " + errorThrown + " status: " + status;
+                $("#detaildata").html(errorInfo);
+            });
+        }
+    </script>
+}
