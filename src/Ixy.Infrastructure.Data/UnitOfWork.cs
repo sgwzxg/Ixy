@@ -38,9 +38,19 @@ namespace Ixy.Infrastructure
             _dbContext.Set<TEntity>().Remove(entity);
         }
 
+        public bool Commit()
+        {
+            return _dbContext.SaveChanges() > 0;
+        }
+
         public async Task<bool> CommitAsync()
         {
             return await _dbContext.SaveChangesAsync() > 0;
+        }
+
+        public async Task RollbackAsync()
+        {
+            throw new NotImplementedException();
         }
 
         public void Rollback()

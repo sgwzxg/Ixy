@@ -12,6 +12,8 @@ namespace Ixy.Infrastructure.Interface
         void RegisterClean<TEntity>(TEntity entity) where TEntity : class;
         void RegisterDeleted<TEntity>(TEntity entity) where TEntity : class;
         Task<bool> CommitAsync();
+        bool Commit();
+        Task RollbackAsync();
         void Rollback();
     }
 }

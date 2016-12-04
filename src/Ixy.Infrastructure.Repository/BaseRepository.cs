@@ -20,49 +20,10 @@ namespace Ixy.Infrastructure.Repository
             _entities = dbContext.Set<T>().AsNoTracking();
         }
 
-        public IQueryable<T> Get()
-        {
-            return Get(null);
-        }
-
-        public IQueryable<T> Get(Expression<Func<T, bool>> predicate)
-        {
-            return Get(predicate, null, SortType.Asc, 0);
-        }
-
-        public IQueryable<T> Get(
-            Expression<Func<T, bool>> predicate,
-            int size)
-        {
-            return Get(predicate, null, SortType.Asc, size);
-        }
-
-        public IQueryable<T> Get(
-            Expression<Func<T, bool>> predicate,
-            int startPage, int pageSize)
-        {
-            return Get(predicate, null, startPage, pageSize);
-        }
-
-        public IQueryable<T> Get(
-            Expression<Func<T, object>> order,
-            SortType sortType, int size)
-        {
-            return Get(null, order, SortType.Asc, size);
-        }
-
         public IQueryable<T> Get(
             Expression<Func<T, bool>> predicate,
             Expression<Func<T, object>> order,
-            int startPage, int pageSize)
-        {
-            return Get(predicate, order, SortType.Asc, startPage, pageSize);
-        }
-
-        public IQueryable<T> Get(
-            Expression<Func<T, bool>> predicate,
-            Expression<Func<T, object>> order,
-            SortType sortType, int size)
+            SortType sortType, int topSize = 0)
         {
             var entities = _entities;
             if (predicate != null)
@@ -70,23 +31,21 @@ namespace Ixy.Infrastructure.Repository
                 entities = entities.Where(predicate);
             }
 
-            if (order == null)
+            if (order != null)
             {
-                order = t => t.Id;
+                if (sortType == SortType.Asc)
+                {
+                    entities = entities.OrderBy(order);
+                }
+                else if (sortType == SortType.Desc)
+                {
+                    entities = entities.OrderByDescending(order);
+                }
             }
 
-            if (sortType == SortType.Asc)
+            if (topSize > 0)
             {
-                entities = entities.OrderBy(order);
-            }
-            else
-            {
-                entities = entities.OrderByDescending(order);
-            }
-
-            if (size > 0)
-            {
-                entities = entities.Take(size);
+                entities = entities.Take(topSize);
             }
 
             return entities;
@@ -95,30 +54,41 @@ namespace Ixy.Infrastructure.Repository
         public IQueryable<T> Get(
             Expression<Func<T, bool>> predicate,
             Expression<Func<T, object>> order,
-            SortType sortType, int startPage, int pageSize)
+            SortType sortType, int startPage, int pageSize, out int total)
         {
             var result = _entities;
 
             if (predicate != null)
+            {
                 result = result.Where(predicate);
+            }
+
+            total = result.Count();
+
             if (order != null)
-                order = t => t.Id;
-            if (sortType == SortType.Asc)
-                result = result.OrderBy(order);
-            else
-                result = result.OrderByDescending(order);
+            {
+                if (sortType == SortType.Asc)
+                {
+                    result = result.OrderBy(order);
+                }
+                else if (sortType == SortType.Desc)
+                {
+                    result = result.OrderByDescending(order);
+                }
+            }
 
             return result.Skip((startPage - 1) * pageSize).Take(pageSize);
         }
 
         public T GetById(string id)
         {
-            return Get(t => t.Id == id).FirstOrDefault();
+
+            return Get(t => t.Id == id, null, SortType.Default).FirstOrDefault();
         }
 
         public async Task<T> GetByIdAsync(string id)
         {
-            return await Get(t => t.Id == id).FirstOrDefaultAsync();
+            return await Get(t => t.Id == id, null, SortType.Default).FirstOrDefaultAsync();
         }
 
     }

@@ -14,5 +14,7 @@ namespace Ixy.Infrastructure.Interface
             where TEntity : class;
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        int SaveChanges();
     }
 }

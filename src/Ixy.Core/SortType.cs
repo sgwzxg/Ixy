@@ -7,6 +7,7 @@ namespace Ixy.Core
 {
     public enum SortType
     {
+        Default,
         Asc,
         Desc
     }

@@ -14,13 +14,18 @@ namespace Ixy.Infrastructure.Repository.Interface
         T GetById(string id);
 
         Task<T> GetByIdAsync(string id);
+        
+        IQueryable<T> Get(
+            Expression<Func<T, bool>> predicate,
+            Expression<Func<T, object>> order,
+            SortType sortType,
+            int topSize);
 
-        IQueryable<T> Get();
-
-        IQueryable<T> Get(Expression<Func<T, bool>> predicate);
-
-        IQueryable<T> Get(Expression<Func<T, bool>> predicate, Expression<Func<T, object>> order, SortType sortType, int size);
-
-        IQueryable<T> Get(Expression<Func<T, bool>> predicate, Expression<Func<T, object>> order, SortType sortType, int startPage, int pageSize);
+        IQueryable<T> Get(
+            Expression<Func<T, bool>> predicate,
+            Expression<Func<T, object>> order,
+            SortType sortType,
+            int startPage,
+            int pageSize, out int total);
     }
 }

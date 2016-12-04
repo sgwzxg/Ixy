@@ -64,11 +64,11 @@ namespace Ixy.Web.Areas.Backend.Controllers
         public async Task<IActionResult> GetByParent(string parentId, int startPageIndex, int pageSize)
         {
             var menu = await _service.GetAsync(t => t.ParentId == parentId, startPageIndex, pageSize);
-            var rowCount = menu.Count();
+            var rowCount = menu.Item2;
             return Json(
                 new
                 {
-                    rowCount = menu.Count(),
+                    rowCount = rowCount,
                     pageCount = Math.Ceiling(Convert.ToDecimal(rowCount) / pageSize),
                     rows = menu
                 }
